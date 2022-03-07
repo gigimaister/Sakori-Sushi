@@ -19,15 +19,16 @@ namespace RealWorldApp.Services
                 Password = password
             };
 
-            var httpClient = new HttpClient();
-            var json = JsonConvert.SerializeObject(register);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Accounts/Register", content);
-
-            if (!response.IsSuccessStatusCode) return false;
+            using (var client = new HttpClient())
+            {
+                var httpClient = new HttpClient();
+                var json = JsonConvert.SerializeObject(register);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Accounts/Register", content);
+                if (!response.IsSuccessStatusCode) return false;
+            }
+                     
             return true;
-
-
         }
 
         // Login
