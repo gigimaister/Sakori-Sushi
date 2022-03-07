@@ -22,7 +22,7 @@ namespace RealWorldApp.Services
             var httpClient = new HttpClient();
             var json = JsonConvert.SerializeObject(register);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("", content);
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Accounts/Register", content);
 
             if (!response.IsSuccessStatusCode) return false;
             return true;
@@ -42,7 +42,7 @@ namespace RealWorldApp.Services
             var httpClient = new HttpClient();
             var json = JsonConvert.SerializeObject(login);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("", content);
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Accounts/Login", content);
 
             if (!response.IsSuccessStatusCode) return false;
 
