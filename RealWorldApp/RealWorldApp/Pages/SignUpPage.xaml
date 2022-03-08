@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translator="clr-namespace:RealWorldApp.Extensions"
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.SignUpPage"
              BackgroundColor="#F7F5F4"
@@ -12,7 +13,7 @@
             <StackLayout Spacing="20"
                          Margin="25">
                 <Label TextColor="#CE0B06"
-                       Text="הרשמה"
+                       Text="{translator:Translate Register}"
                        FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
@@ -21,29 +22,29 @@
                        Padding="25"
                        Margin="0,30,0,0">
                     <StackLayout>
-                        <Label Text="יצירת חשבון חדש"
+                        <Label Text="{translator:Translate Create New Account}"
                                FontAttributes="Bold"
                                FontSize="Title"
                                HorizontalOptions="Center"
                                TextColor="#CE0B06" />
-                        <Entry Placeholder="שם מלא"
+                        <Entry Placeholder="{translator:Translate FullName}"
                                PlaceholderColor="#80574D"
                                TextColor="#80574D"
                                x:Name="EntName"
                                Keyboard="Text" />
-                        <Entry Placeholder="אימייל"
+                        <Entry Placeholder="{translator:Translate Email}"
                                PlaceholderColor="#80574D"
                                TextColor="#80574D"
                                x:Name="EntEmail"
                                Keyboard="Email" />
-                        <Entry Placeholder="סיסמא"
+                        <Entry Placeholder="{translator:Translate Password}"
                                HorizontalTextAlignment="End"
                                PlaceholderColor="#80574D"
                                TextColor="#80574D"
                                IsPassword="True"
                                x:Name="EntPassword"
                                Keyboard="Default" />
-                        <Entry Placeholder="אישור סיסמא"
+                        <Entry Placeholder="{translator:Translate ConfirmPassword}"
                                HorizontalTextAlignment="End"
                                PlaceholderColor="#80574D"
                                TextColor="#80574D"
@@ -54,21 +55,24 @@
                                FontSize="Small"
                                HorizontalTextAlignment="Center"
                                TextColor="#80574D"
-                               Text="בלחיצה מטה אני מסכים\ה לתנאי השימוש ו-הפרטיות" />
+                               Text="{translator:Translate Accept Terms}" />
                     </StackLayout>
                 </Frame>
-                <Button Text="CONTINUE"
+                <Button Text="{translator:Translate Continue}"
                         TextColor="White"
                         BackgroundColor="#CE0B06"
                         x:Name="BtnSignUp" 
-                        Clicked="BtnSignUp_Clicked"/>
-                <Label Text="יש לך כבר חשבון?"
+                        Clicked="BtnSignUp_Clicked"
+                        CornerRadius="120"/>
+                <Label Text="{translator:Translate HaveAnAccount}"
                        HorizontalTextAlignment="Center"
                        TextColor="#80574D" />
-                <Button Text="כניסה"
+                <Button Text="{translator:Translate Login}"
                         BackgroundColor="#CE0B06"
                         TextColor="White"
-                        x:Name="BtnLogin" />
+                        x:Name="BtnLogin" 
+                        CornerRadius="120"
+                        Margin="0,0,0,15"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
