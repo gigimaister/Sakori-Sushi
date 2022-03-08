@@ -151,6 +151,32 @@ namespace RealWorldApp.Services
             }
         }
 
+        // GET Orders By User 
+        public static async Task<List<OrderByUser>> GetOrdersByUser(int userId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Orders/OrdersByUser/{userId}");
+                var json = JsonConvert.DeserializeObject<List<OrderByUser>>(response);
+                return json;
+            }
+        }
+
+        // GET Orders Details
+        public static async Task<List<Order>> GetOrderDetails(int orderId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Orders/OrderDetails/{orderId}");
+                var json = JsonConvert.DeserializeObject<List<Order>>(response);
+                return json;
+            }
+        }
+
+
+
         #endregion
 
         #region POST
@@ -182,10 +208,12 @@ namespace RealWorldApp.Services
 
                 // Get Response Here
                 var jsonResult = await response.Content.ReadAsStringAsync();
+
                 var result = JsonConvert.DeserializeObject<OrderResponse>(jsonResult);
+                return result;
             }
 
-            return true;
+            
         }
 
 
