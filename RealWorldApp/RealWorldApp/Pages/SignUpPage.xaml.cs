@@ -24,7 +24,7 @@ namespace RealWorldApp.Pages
             // If Passwords Doesn't Match
             if (!EntPassword.Text.Equals(EntConfirmPassword.Text))
             {
-                await DisplayAlert(HebrewMessages.Alert_Pwd_Missmatch, HebrewMessages.Alert_pls_Check_pwds, HebrewMessages.Alert_Dismiss);
+                await DisplayAlert(TraslatedMessages.Alert_Pwd_Missmatch(), TraslatedMessages.Alert_pls_Check_pwds(), TraslatedMessages.Alert_Dismiss());
             }
             else
             {
@@ -33,11 +33,11 @@ namespace RealWorldApp.Pages
                 bool response = await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
                 if (response)
                 {
-                    await DisplayAlert(HebrewMessages.Alert_Hello_Kampai, HebrewMessages.Alert_Account_Created, HebrewMessages.Alert_Dismiss);
+                    await DisplayAlert(TraslatedMessages.Alert_Hello_Kampai(), TraslatedMessages.Alert_Account_Created(), TraslatedMessages.Alert_Dismiss());
                 }
                 else
                 {
-                    await DisplayAlert(HebrewMessages.Alert_Oops, HebrewMessages.Alert_Something_Went_Wrong, HebrewMessages.Alert_Dismiss);
+                    await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
                 }
             }
 
