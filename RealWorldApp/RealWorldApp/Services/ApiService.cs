@@ -14,7 +14,7 @@ namespace RealWorldApp.Services
         #region AUTHORIZATION
 
         // Register
-        public async Task<bool> RegisterUser(string name, string email, string password)
+        public async static Task<bool> RegisterUser(string name, string email, string password)
         {
             var register = new Register()
             {
