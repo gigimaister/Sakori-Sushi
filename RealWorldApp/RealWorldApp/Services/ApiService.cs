@@ -115,6 +115,42 @@ namespace RealWorldApp.Services
             }
         }
 
+        // GET Cart SubToatal 
+        public static async Task<CartSubTotal> GetCartSubTotal(int userId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/SubTotal/{userId}");
+                var json = JsonConvert.DeserializeObject<CartSubTotal>(response);
+                return json;
+            }
+        }
+
+        // GET Shopping Cart Item
+        public static async Task<List<ShoppingCartItem>> GetShoppingCartItems(int userId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/{userId}");
+                var json = JsonConvert.DeserializeObject<List<ShoppingCartItem>>(response);
+                return json;
+            }
+        }
+
+        // GET Total Cart Items 
+        public static async Task<TotalCartItem> GetTotalCartItems(int userId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/TotalItems/{userId}");
+                var json = JsonConvert.DeserializeObject<TotalCartItem>(response);
+                return json;
+            }
+        }
+
         #endregion
 
         #region POST
@@ -134,6 +170,40 @@ namespace RealWorldApp.Services
             return true;
         }
 
+        // Place Order
+        public async Task<OrderResponse> PlaceOrder(Order order)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var json = JsonConvert.SerializeObject(order);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Orders", content);
+
+                // Get Response Here
+                var jsonResult = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<OrderResponse>(jsonResult);
+            }
+
+            return true;
+        }
+
+
+        #endregion
+
+        #region DELETE
+
+        // Delete Shopping Cart
+        public static async Task<bool> ClearShoppingCart(int userId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.DeleteAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/{userId}");
+                if (!response.IsSuccessStatusCode) return false;
+                return true;
+            }
+        }
         #endregion
     }
 }
