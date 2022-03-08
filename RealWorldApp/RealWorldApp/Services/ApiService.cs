@@ -4,11 +4,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using System.Net.Http.Headers;
+using System.Collections.Generic;
 
 namespace RealWorldApp.Services
 {
     public class ApiService
     {
+        #region AUTHORIZATION
+
         // Register
         public async Task<bool> RegisterUser(string name, string email, string password)
         {
@@ -59,6 +63,77 @@ namespace RealWorldApp.Services
             return true;
 
         }
+        #endregion
 
+        #region GET
+
+        // GET All Categories
+        public static async Task<List<Category>> GetCategories()
+        {
+            using (var httpClient = new  HttpClient())
+            {               
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Categories");
+                var json = JsonConvert.DeserializeObject<List<Category>>(response);
+                return json;
+            }
+        }
+
+        // GET Product By Id 
+        public static async Task<Product> GetProductById(int productId)
+        {
+            using (var httpClient = new HttpClient())
+            {              
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/{productId}");
+                var json = JsonConvert.DeserializeObject<Product>(response);
+                return json;
+            }
+        }
+
+        // GET Products By Category
+        public static async Task<List<ProductByCategory>> GetProductByCategory(int categoryId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/ProductsByCategory/{categoryId}");
+                var json = JsonConvert.DeserializeObject<List<ProductByCategory>>(response);
+                return json;
+            }
+        }
+
+        // GET Popular Products
+        public static async Task<List<PopularProduct>> GetPopularProducts()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/PopularProducts");
+                var json = JsonConvert.DeserializeObject<List<PopularProduct>>(response);
+                return json;
+            }
+        }
+
+        #endregion
+
+        #region POST
+
+        // Add Item To Cart
+        public async Task<bool> AddItemsInCart(AddToCart addToCart)
+        {       
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var json = JsonConvert.SerializeObject(addToCart);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems", content);
+                if (!response.IsSuccessStatusCode) return false;
+            }
+
+            return true;
+        }
+
+        #endregion
     }
 }
