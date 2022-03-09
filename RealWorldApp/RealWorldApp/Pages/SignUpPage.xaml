@@ -6,73 +6,67 @@
              xmlns:translator="clr-namespace:RealWorldApp.Extensions"
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.SignUpPage"
-             BackgroundColor="#F7F5F4"
+             BackgroundColor="{StaticResource PageBackgroundColor}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20"
                          Margin="25">
-                <Label TextColor="#CE0B06"
+                <Label TextColor="{StaticResource Black}"
                        Text="{translator:Translate Register}"
                        FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
                        Margin="30,0,30,0" />
+                <Image Source="Sakori_Logo_Crop.jpg"
+                       HeightRequest="55"
+                       Opacity="0.7">
+                </Image>
                 <Frame HasShadow="True"
                        Padding="25"
-                       Margin="0,30,0,0">
+                       Margin="0,30,0,0"
+                       CornerRadius="110">
                     <StackLayout>
                         <Label Text="{translator:Translate Create New Account}"
-                               FontAttributes="Bold"
-                               FontSize="Title"
-                               HorizontalOptions="Center"
-                               TextColor="#CE0B06" />
+                               Style="{StaticResource LabelRegister}"
+                               TextColor="{StaticResource Black}" />
                         <Entry Placeholder="{translator:Translate FullName}"
-                               PlaceholderColor="#80574D"
-                               TextColor="#80574D"
-                               x:Name="EntName"
-                               Keyboard="Text" />
-                        <Entry Placeholder="{translator:Translate Email}"
-                               PlaceholderColor="#80574D"
-                               TextColor="#80574D"
-                               x:Name="EntEmail"
-                               Keyboard="Email" />
+                               Style="{StaticResource RegisterEntry}"
+                               x:Name="EntName"/>
+                        <Entry Placeholder="{translator:Translate Email}" 
+                               Style="{StaticResource RegisterEntry}"
+                               x:Name="EntEmail"/>
                         <Entry Placeholder="{translator:Translate Password}"
                                HorizontalTextAlignment="End"
-                               PlaceholderColor="#80574D"
-                               TextColor="#80574D"
+                               Style="{StaticResource RegisterEntry}"
                                IsPassword="True"
                                x:Name="EntPassword"
                                Keyboard="Default" />
                         <Entry Placeholder="{translator:Translate ConfirmPassword}"
                                HorizontalTextAlignment="End"
-                               PlaceholderColor="#80574D"
-                               TextColor="#80574D"
+                               Style="{StaticResource RegisterEntry}"
                                IsPassword="True"
                                x:Name="EntConfirmPassword"
                                Keyboard="Default" />
                         <Label Margin="20,0,20,0"
                                FontSize="Small"
                                HorizontalTextAlignment="Center"
-                               TextColor="#80574D"
+                               TextColor="{StaticResource LightBrown}"
                                Text="{translator:Translate Accept Terms}" />
                     </StackLayout>
                 </Frame>
                 <Button Text="{translator:Translate Continue}"
-                        TextColor="White"
-                        BackgroundColor="#CE0B06"
+                        TextColor="{StaticResource BtnTextColor}"
+                        BackgroundColor="{StaticResource LightRed}"
                         x:Name="BtnSignUp" 
                         Clicked="BtnSignUp_Clicked"
                         CornerRadius="120"/>
                 <Label Text="{translator:Translate HaveAnAccount}"
                        HorizontalTextAlignment="Center"
-                       TextColor="#80574D" />
+                       TextColor="{StaticResource LightBrown}" />
                 <Button Text="{translator:Translate Login}"
-                        BackgroundColor="#CE0B06"
-                        TextColor="White"
-                        x:Name="BtnLogin" 
-                        CornerRadius="120"
-                        Margin="0,0,0,15"/>
+                        BackgroundColor="{StaticResource LightBlackGray}"
+                        Style="{StaticResource MainBtnStyle}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

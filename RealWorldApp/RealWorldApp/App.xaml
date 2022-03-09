@@ -3,6 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RealWorldApp.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <!--Common-->
+            <!--Common Text Colors-->
+            <Color x:Key="LightBrown">#80574D</Color>
+            <Color x:Key="BtnTextColor">white</Color>
+            <Color x:Key="Black">black</Color>
+                      
+            <!-- Buttons -->
+            <!-- Login/Register/Authorization -->
+            <Color x:Key="LightRed">#CA1D23</Color>
+            <Color x:Key="LightBlackGray">#584e52</Color>
+            <Color x:Key="PageBackgroundColor">#fef9f5</Color>
+            
+            <Style x:Key="MainBtnStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="120"/>
+                <Setter Property="Margin" Value="0,0,0,15"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            
+            <!--Labels-->
+            <!--Labels Header-->
+            <Style x:Key="LabelRegister" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="Margin" Value="0,30,0,0"/>
+            </Style>
+            
+            <!--Entries-->
+            <Style x:Key="RegisterEntry" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="#80574D"/>
+                <Setter Property="TextColor" Value="#80574D"/>
+                <Setter Property="Keyboard" Value="Text"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

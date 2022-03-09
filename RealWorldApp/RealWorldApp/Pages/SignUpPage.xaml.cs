@@ -28,7 +28,6 @@ namespace RealWorldApp.Pages
             }
             else
             {
-
                 // ApiService Register Method
                 bool response = await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
                 if (response)
