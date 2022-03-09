@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"           
              xmlns:translator="clr-namespace:RealWorldApp.Extensions"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.SignUpPage"
              BackgroundColor="{StaticResource PageBackgroundColor}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
+
         <ScrollView>
             <StackLayout Spacing="20"
                          Margin="25">
@@ -20,12 +22,14 @@
                        Margin="30,0,30,0" />
                 <Image Source="Sakori_Logo_Crop.jpg"
                        HeightRequest="55"
-                       Opacity="0.7">
+                       Opacity="0.6">
                 </Image>
+
                 <Frame HasShadow="True"
                        Padding="25"
                        Margin="0,30,0,0"
                        CornerRadius="110">
+
                     <StackLayout>
                         <Label Text="{translator:Translate Create New Account}"
                                Style="{StaticResource LabelRegister}"
@@ -68,6 +72,7 @@
                         BackgroundColor="{StaticResource LightBlackGray}"
                         Style="{StaticResource MainBtnStyle}"/>
             </StackLayout>
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
