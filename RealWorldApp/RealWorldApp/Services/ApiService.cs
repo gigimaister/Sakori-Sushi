@@ -23,9 +23,8 @@ namespace RealWorldApp.Services
                 Password = password
             };
 
-            using (var client = new HttpClient())
-            {
-                var httpClient = new HttpClient();
+            using (var httpClient = new HttpClient())
+            {             
                 var json = JsonConvert.SerializeObject(register);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}/api/Accounts/Register", content);

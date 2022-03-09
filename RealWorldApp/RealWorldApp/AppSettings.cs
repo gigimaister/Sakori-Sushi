@@ -5,7 +5,7 @@ namespace RealWorldApp
 {
     public static class AppSettings
     {
-        public static string ApiUrl = "http://localhost:49887/";
+        public static string ApiUrl = "http://192.168.254.83:45457";
     }
 
     public static class TraslatedMessages
@@ -40,13 +40,13 @@ namespace RealWorldApp
         {
             if (userLanguage == "en") return EnglishMessages.Alert_Something_Went_Wrong;
             else if (userLanguage == "rus") return "";
-            else return HebrewMessages.Alert_pls_Check_pwds;
+            else return HebrewMessages.Alert_Something_Went_Wrong;
         }
         public static string Alert_Pwd_Missmatch()
         {
             if (userLanguage == "en") return EnglishMessages.Alert_Pwd_Missmatch;
             else if (userLanguage == "rus") return "";
-            else return HebrewMessages.Alert_pls_Check_pwds;
+            else return HebrewMessages.Alert_Pwd_Missmatch;
         }
         public static string Alert_pls_Check_pwds()
         {
@@ -55,6 +55,7 @@ namespace RealWorldApp
             else return HebrewMessages.Alert_pls_Check_pwds;
         }       
     }
+
     #region Languages
     public static class EnglishMessages
     {

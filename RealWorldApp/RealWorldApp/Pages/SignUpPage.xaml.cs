@@ -26,10 +26,12 @@ namespace RealWorldApp.Pages
             {
                 await DisplayAlert(TraslatedMessages.Alert_Pwd_Missmatch(), TraslatedMessages.Alert_pls_Check_pwds(), TraslatedMessages.Alert_Dismiss());
             }
+
             else
             {
                 // ApiService Register Method
                 bool response = await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
+
                 if (response)
                 {
                     await DisplayAlert(TraslatedMessages.Alert_Hello_Kampai(), TraslatedMessages.Alert_Account_Created(), TraslatedMessages.Alert_Dismiss());
