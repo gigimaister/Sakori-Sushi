@@ -15,7 +15,7 @@ namespace RealWorldApp.Pages
     {
         public SignUpPage()
         {
-            InitializeComponent();
+            InitializeComponent();        
         }
 
         // Btn SignUp Click
@@ -52,6 +52,12 @@ namespace RealWorldApp.Pages
         {
             // Redirect To Login
             await Navigation.PushModalAsync(new LoginPage());
+
+            // Set Register Values To Empty When Leaving Page
+            EntName.Text = string.Empty;
+            EntEmail.Text = string.Empty;
+            EntPassword.Text = string.Empty;
+            EntConfirmPassword.Text = string.Empty;
         }
     }
 }

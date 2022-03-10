@@ -73,7 +73,8 @@
                     <Button Text="{translator:Translate Login}"
                     Style="{StaticResource MainBtnStyle}"
                     BackgroundColor="{StaticResource LightRed}"
-                    x:Name="BtnLogin"/>
+                    x:Name="BtnLogin" 
+                            Clicked="BtnLogin_Clicked"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

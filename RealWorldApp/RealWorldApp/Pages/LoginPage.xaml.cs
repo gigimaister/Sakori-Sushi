@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealWorldApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,19 @@ namespace RealWorldApp.Pages
         private async  void TapBackArrow_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        private async void BtnLogin_Clicked(object sender, EventArgs e)
+        {
+            var response = await ApiService.Login(EntEmail.Text, EntPassword.Text);
+            if (response)
+            {
+                Application.Current.MainPage = new NavigationPage(new HomePgae());
+            }
+            else
+            {
+                await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
+            }
         }
     }
 }
