@@ -167,5 +167,14 @@ namespace RealWorldApp.Localization {
                 return ResourceManager.GetString("Register", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to כניסה.
+        /// </summary>
+        internal static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
     }
 }

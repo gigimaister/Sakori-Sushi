@@ -37,6 +37,10 @@
                 <Setter Property="TextColor" Value="#80574D"/>
                 <Setter Property="Keyboard" Value="Text"/>
             </Style>
+            <!--Frame-->
+            <Style x:Key="Frame" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="110"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

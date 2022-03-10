@@ -16,7 +16,7 @@ namespace RealWorldApp
             var deviceLanguage = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;           
             Preferences.Set("deviceLanguage", deviceLanguage);
 
-            MainPage = new SignUpPage();
+            MainPage = new NavigationPage(new SignUpPage());
             
         }
 

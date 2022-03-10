@@ -32,9 +32,12 @@ namespace RealWorldApp.Pages
                 // ApiService Register Method
                 bool response = await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
 
+                // If Successfull Logon
                 if (response)
                 {
                     await DisplayAlert(TraslatedMessages.Alert_Hello_Kampai(), TraslatedMessages.Alert_Account_Created(), TraslatedMessages.Alert_Dismiss());
+                    // Redirect To Login
+                    await Navigation.PushModalAsync(new LoginPage());
                 }
                 else
                 {
@@ -42,6 +45,13 @@ namespace RealWorldApp.Pages
                 }
             }
 
+        }
+
+        // User Clicked Login
+        private async void BtnLogin_Clicked(object sender, EventArgs e)
+        {
+            // Redirect To Login
+            await Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

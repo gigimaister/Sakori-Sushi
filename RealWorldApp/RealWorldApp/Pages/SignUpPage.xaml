@@ -28,7 +28,7 @@
                 <Frame HasShadow="True"
                        Padding="25"
                        Margin="0,30,0,0"
-                       CornerRadius="110">
+                       Style="{StaticResource Frame}">
 
                     <StackLayout>
                         <Label Text="{translator:Translate Create New Account}"
@@ -40,14 +40,12 @@
                         <Entry Placeholder="{translator:Translate Email}" 
                                Style="{StaticResource RegisterEntry}"
                                x:Name="EntEmail"/>
-                        <Entry Placeholder="{translator:Translate Password}"
-                               HorizontalTextAlignment="End"
+                        <Entry Placeholder="{translator:Translate Password}"                             
                                Style="{StaticResource RegisterEntry}"
                                IsPassword="True"
                                x:Name="EntPassword"
                                Keyboard="Default" />
-                        <Entry Placeholder="{translator:Translate ConfirmPassword}"
-                               HorizontalTextAlignment="End"
+                        <Entry Placeholder="{translator:Translate ConfirmPassword}"                             
                                Style="{StaticResource RegisterEntry}"
                                IsPassword="True"
                                x:Name="EntConfirmPassword"
@@ -70,7 +68,8 @@
                        TextColor="{StaticResource LightBrown}" />
                 <Button Text="{translator:Translate Login}"
                         BackgroundColor="{StaticResource LightBlackGray}"
-                        Style="{StaticResource MainBtnStyle}"/>
+                        Style="{StaticResource MainBtnStyle}"
+                        Clicked="BtnLogin_Clicked"/>
             </StackLayout>
 
         </ScrollView>
