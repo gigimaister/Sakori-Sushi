@@ -62,19 +62,21 @@
                            TextColor="{StaticResource LightBrown}"
                            x:Name="EntEmail"
                            Keyboard="Email" />
+                            <Label TextColor="red" x:Name="ErrorEmailLabel"/>
                             <Entry Placeholder="{translator:Translate Password}"
                            PlaceholderColor="{StaticResource LightBrown}"
                            TextColor="{StaticResource LightBrown}"
                            IsPassword="True"
                            x:Name="EntPassword"
-                           Keyboard="Default" />
+                           Keyboard="Default"/>
+                           <Label TextColor="red" x:Name="ErrorPwdLabel"/>
                         </StackLayout>
                     </Frame>
                     <Button Text="{translator:Translate Login}"
                     Style="{StaticResource MainBtnStyle}"
                     BackgroundColor="{StaticResource LightRed}"
                     x:Name="BtnLogin" 
-                            Clicked="BtnLogin_Clicked"/>
+                    Clicked="BtnLogin_Clicked"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

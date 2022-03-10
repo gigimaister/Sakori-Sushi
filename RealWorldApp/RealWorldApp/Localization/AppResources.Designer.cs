@@ -151,6 +151,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our Menu.
+        /// </summary>
+        internal static string OurMenu {
+            get {
+                return ResourceManager.GetString("OurMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to סיסמא.
         /// </summary>
         internal static string Password {

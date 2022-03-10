@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace RealWorldApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePgae : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public HomePgae()
+        public HomePage()
         {
             InitializeComponent();
         }

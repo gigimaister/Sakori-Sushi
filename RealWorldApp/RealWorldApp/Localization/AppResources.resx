@@ -147,6 +147,9 @@
   <data name="Logout" xml:space="preserve">
     <value>יציאה</value>
   </data>
+  <data name="OurMenu" xml:space="preserve">
+    <value>Our Menu</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>סיסמא</value>
   </data>

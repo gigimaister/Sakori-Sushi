@@ -26,12 +26,14 @@ namespace RealWorldApp.Pages
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
             var response = await ApiService.Login(EntEmail.Text, EntPassword.Text);
+
+            // If Login Successfull 
             if (response)
             {
-                Application.Current.MainPage = new NavigationPage(new HomePgae());
+                Application.Current.MainPage = new NavigationPage(new HomePage());
             }
             else
-            {
+            {               
                 await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
             }
         }
