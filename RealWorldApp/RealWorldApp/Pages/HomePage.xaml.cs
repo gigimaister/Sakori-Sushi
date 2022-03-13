@@ -1,5 +1,8 @@
-﻿using System;
+﻿using RealWorldApp.Models;
+using RealWorldApp.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +15,43 @@ namespace RealWorldApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        // ObservCol For Popular Products
+        public ObservableCollection<PopularProduct> ProductCollection;
+
+        // ObservCol For Categories
+        public ObservableCollection<Category> CategoriesCollection;
         public HomePage()
         {
             InitializeComponent();
+            ProductCollection = new ObservableCollection<PopularProduct>();
+            CategoriesCollection = new ObservableCollection<Category>();
+            GetPopularProducts();
+            GetCategories();
+        }
+
+
+        // Get Categories
+        private async void GetCategories()
+        {
+            var categories = await ApiService.GetCategories();
+            foreach (var category in categories)
+            {
+                CategoriesCollection.Add(category);
+            }
+            // Attach Xaml Cv To Collection
+            CvCategories.ItemsSource = CategoriesCollection;
+        }
+
+        // Get Popular Products
+        private async void GetPopularProducts()
+        {
+            var products = await ApiService.GetPopularProducts();
+            foreach (var product in products)
+            {
+                ProductCollection.Add(product);
+            }
+            // Attach Xaml Cv To Collection
+            CvProducts.ItemsSource = ProductCollection;
         }
 
         // Hamburger Menu Tapped

@@ -44,11 +44,13 @@
                                                        HorizontalOptions="Center">
                                                     <Image Aspect="AspectFill"
                                                            HorizontalOptions="FillAndExpand"
-                                                           VerticalOptions="FillAndExpand" />
+                                                           VerticalOptions="FillAndExpand" 
+                                                           Source="{Binding FullImageUrl}"/>
                                                 </Frame>
                                                 <Label TextColor="{StaticResource LightRed}"
                                                        HorizontalTextAlignment="Center"
-                                                       FontSize="Medium" />
+                                                       FontSize="Medium" 
+                                                       Text="{Binding name}"/>
                                             </StackLayout>
                                         </Frame>
                                     </StackLayout>
@@ -56,7 +58,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                         <Label Margin="15,15,15,0"
-                               Text="Popular Products"
+                               Text="{translator:Translate PopularProducts}"
                                TextColor="{StaticResource Black}"
                                FontSize="Medium" />
                     </StackLayout>
@@ -69,9 +71,13 @@
                                      Orientation="Vertical">
                             <Image Aspect="Fill"
                                    HeightRequest="150"
-                                   WidthRequest="150" />
-                            <Label TextColor="{StaticResource Black}" />
-                            <Label TextColor="{StaticResource LightRed}" />
+                                   WidthRequest="150" 
+                                   Source="{Binding FullImageUrl}"/>
+                            <Label TextColor="{StaticResource Black}"
+                                   Text="{Binding name}"/>
+                            <Label TextColor="{StaticResource LightRed}"
+                                   Text="{Binding price, StringFormat='₪{0}'}"
+                                   HorizontalTextAlignment="End"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

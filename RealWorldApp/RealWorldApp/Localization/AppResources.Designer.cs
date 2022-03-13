@@ -205,6 +205,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to מוצרים פופולריים.
+        /// </summary>
+        internal static string PopularProducts {
+            get {
+                return ResourceManager.GetString("PopularProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הרשמה.
         /// </summary>
         internal static string Register {

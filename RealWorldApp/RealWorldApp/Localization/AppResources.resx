@@ -165,6 +165,9 @@
   <data name="Password" xml:space="preserve">
     <value>סיסמא</value>
   </data>
+  <data name="PopularProducts" xml:space="preserve">
+    <value>מוצרים פופולריים</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>הרשמה</value>
   </data>

@@ -165,6 +165,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PopularProducts" xml:space="preserve">
+    <value>Popular Products</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
