@@ -70,11 +70,29 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to עגלה.
+        /// </summary>
+        internal static string Cart {
+            get {
+                return ResourceManager.GetString("Cart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to אישור סיסמא.
         /// </summary>
         internal static string ConfirmPassword {
             get {
                 return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to צרו קשר.
+        /// </summary>
+        internal static string ContactUs {
+            get {
+                return ResourceManager.GetString("ContactUs", resourceCulture);
             }
         }
         
@@ -133,6 +151,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to היי (:.
+        /// </summary>
+        internal static string Hi {
+            get {
+                return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to התחברות.
         /// </summary>
         internal static string Login {
@@ -151,7 +178,16 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our Menu.
+        ///   Looks up a localized string similar to ההזמנות שלי.
+        /// </summary>
+        internal static string MyOrders {
+            get {
+                return ResourceManager.GetString("MyOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to התפריט שלנו.
         /// </summary>
         internal static string OurMenu {
             get {
@@ -183,6 +219,15 @@ namespace RealWorldApp.Localization {
         internal static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ברוכים הבאים .
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

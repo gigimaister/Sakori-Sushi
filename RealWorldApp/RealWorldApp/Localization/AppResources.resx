@@ -120,8 +120,14 @@
   <data name="Accept Terms" xml:space="preserve">
     <value>בהרשמה  אני מסכים\ה לתנאי השימוש ו-הפרטיות</value>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>עגלה</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>אישור סיסמא</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>צרו קשר</value>
   </data>
   <data name="Continue" xml:space="preserve">
     <value>המשך</value>
@@ -141,14 +147,20 @@
   <data name="HelloMessage" xml:space="preserve">
     <value>שלום</value>
   </data>
+  <data name="Hi" xml:space="preserve">
+    <value>היי (:</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>התחברות</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>יציאה</value>
   </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>ההזמנות שלי</value>
+  </data>
   <data name="OurMenu" xml:space="preserve">
-    <value>Our Menu</value>
+    <value>התפריט שלנו</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>סיסמא</value>
@@ -158,5 +170,8 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>כניסה</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>ברוכים הבאים </value>
   </data>
 </root>

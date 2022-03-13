@@ -99,16 +99,8 @@
                              Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="3">
-                    <Image HorizontalOptions="Start"
-                           Margin="20,20,0,0"
-                           Source="menu.png"
-                           HeightRequest="30">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="ImgMenu"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Grid HorizontalOptions="EndAndExpand"
-                          Margin="0,0,20,0">
+                    <Grid HorizontalOptions="StartAndExpand"
+                          Margin="5,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -144,10 +136,18 @@
                             <TapGestureRecognizer x:Name="TapCartIcon" />
                         </Grid.GestureRecognizers>
                     </Grid>
+                    <Image HorizontalOptions="Start"                          
+                           Margin="0,0,20,0"
+                           Source="menu.png"
+                           HeightRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="ImgMenu"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
-                <Image Margin="0,15,0,0"
+                <Image Margin="0,12,0,0"
                        HorizontalOptions="CenterAndExpand"
-                       HeightRequest="85"                      
+                       HeightRequest="75"                      
                        VerticalOptions="CenterAndExpand"
                        Source="Sakori_Logo_Crop_circle.jpg"
                        Aspect="AspectFit"
@@ -156,32 +156,34 @@
                        Grid.RowSpan="3" />
             </Grid>
             <Grid x:Name="GridOverlay" IsVisible="False"
-                  ColumnSpacing="0">
+                  ColumnSpacing="0"
+                  FlowDirection="RightToLeft">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.6*" />
                     <ColumnDefinition Width="0.4*" />
                 </Grid.ColumnDefinitions>
                 <StackLayout BackgroundColor="White"
-                             x:Name="SlMenu" >
-                    <Grid BackgroundColor="#CE0B06"
+                             x:Name="SlMenu">
+                    <Grid BackgroundColor="{StaticResource PageBackgroundColor}"
                           HeightRequest="120">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*" />
                             <ColumnDefinition Width="6*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="kfc.png"
-                               Margin="5"
-                               VerticalOptions="Center" />
+                        <Image Source="Sakori_Logo_Crop_circle.jpg"
+                               Margin="10"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"/>
                         <StackLayout Grid.Column="1"
                                      VerticalOptions="Center"
                                      Spacing="0"
                                      Margin="15,0,15,0">
-                            <Label Text="Welcome"
+                            <Label Text="{translator:Translate Hi}"
                                    FontSize="Large"
-                                   TextColor="White" />
+                                   TextColor="{StaticResource Black}" />
                             <Label x:Name="LblUserName"
                                    FontSize="Small"
-                                   TextColor="White" />
+                                   TextColor="{StaticResource White}" />
                         </StackLayout>
                     </Grid>
                     <StackLayout Spacing="30"
@@ -189,9 +191,10 @@
                                  Margin="20,0,0,0">
                         <Image Source="order.png"
                                HeightRequest="30"
-                               WidthRequest="30" />
-                        <Label Text="My Orders"
-                               TextColor="#80574D"
+                               WidthRequest="30"
+                               Margin="0,0,10,0"/>
+                        <Label Text="{translator:Translate MyOrders}"
+                               TextColor="{StaticResource LightBrown}"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -204,9 +207,10 @@
                                  Margin="20,0,0,0">
                         <Image Source="shopping_cart.png"
                                HeightRequest="30"
-                               WidthRequest="30" />
-                        <Label Text="Cart"
-                               TextColor="#80574D"
+                               WidthRequest="30"
+                               Margin="0,0,10,0"/>
+                        <Label Text="{translator:Translate Cart}"
+                               TextColor="{StaticResource LightBrown}"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -219,9 +223,10 @@
                                  Margin="20,0,0,0">
                         <Image Source="contact.png"
                                HeightRequest="30"
-                               WidthRequest="30" />
-                        <Label Text="Contact"
-                               TextColor="#80574D"
+                               WidthRequest="30" 
+                               Margin="0,0,10,0"/>
+                        <Label Text="{translator:Translate ContactUs}"
+                               TextColor="{StaticResource LightBrown}"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -234,9 +239,10 @@
                                  Margin="20,0,0,0">
                         <Image Source="logout.png"
                                HeightRequest="30"
-                               WidthRequest="30" />
-                        <Label Text="Logout"
-                               TextColor="#80574D"
+                               WidthRequest="30" 
+                               Margin="0,0,10,0"/>
+                        <Label Text="{translator:Translate Logout}"
+                               TextColor="{StaticResource LightBrown}"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />

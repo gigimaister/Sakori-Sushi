@@ -120,8 +120,14 @@
   <data name="Accept Terms" xml:space="preserve">
     <value>By creating an account you agree to our Terms of Service and Privacy Policy</value>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>ConfirmPassword</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
   </data>
   <data name="Continue" xml:space="preserve">
     <value>Continue</value>
@@ -141,14 +147,20 @@
   <data name="HelloMessage" xml:space="preserve">
     <value>Hello</value>
   </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Hi (:</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
   <data name="OurMenu" xml:space="preserve">
-    <value>התפריט שלנו</value>
+    <value>Our Menu</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -158,5 +170,8 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
   </data>
 </root>

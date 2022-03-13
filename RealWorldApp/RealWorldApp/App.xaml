@@ -9,6 +9,7 @@
             <Color x:Key="LightBrown">#80574D</Color>
             <Color x:Key="BtnTextColor">white</Color>
             <Color x:Key="Black">black</Color>
+            <Color x:Key="White">white</Color>
                       
             <!-- Buttons -->
             <!-- Login/Register/Authorization -->
