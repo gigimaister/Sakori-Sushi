@@ -57,7 +57,7 @@
                         </CollectionView>
                         <Label Margin="15,15,15,0"
                                Text="Popular Products"
-                               TextColor="Black"
+                               TextColor="{StaticResource Black}"
                                FontSize="Medium" />
                     </StackLayout>
                 </CollectionView.Header>
@@ -141,7 +141,7 @@
                            Source="menu.png"
                            HeightRequest="30">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="ImgMenu"/>
+                            <TapGestureRecognizer x:Name="ImgMenu" Tapped="ImgMenu_Tapped"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -253,7 +253,7 @@
                 </StackLayout>
                 <BoxView Grid.Column="1" x:Name="BoxViewLayer">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="TapCloseMenu" />
+                        <TapGestureRecognizer x:Name="TapCloseMenu" Tapped="TapCloseMenu_Tapped" />
                     </BoxView.GestureRecognizers>
                 </BoxView>
             </Grid>
