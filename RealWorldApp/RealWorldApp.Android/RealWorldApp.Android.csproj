@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealWorldApp\RealWorldApp.csproj">
-      <Project>{F4F8A65E-972E-46A0-A145-9615EB7B82BF}</Project>
+      <Project>{625EBD94-412A-4E27-833F-07C922F3272B}</Project>
       <Name>RealWorldApp</Name>
     </ProjectReference>
   </ItemGroup>
