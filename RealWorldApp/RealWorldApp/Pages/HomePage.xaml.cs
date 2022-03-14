@@ -68,5 +68,26 @@ namespace RealWorldApp.Pages
             await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
             GridOverlay.IsVisible = false;
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
+            var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
+            LblTotalItems.Text = response.totalItems.ToString();
+        }
+
+        // When User Clicked On Category
+        private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Get Current Category Selection
+            var currentSelection = e.CurrentSelection.FirstOrDefault() as Category;
+            // If Selection Is Null Do Nothing
+            if (currentSelection == null) return;
+            // Go To ProductListPage
+            Navigation.PushModalAsync(new ProductListPage());
+            // When Navigting Back To HomePage We Want Unchecked Categories
+            ((CollectionView)sender).SelectedItem = null;
+        }
     }
 }
