@@ -29,7 +29,8 @@
                        />
             </Grid>
             <CollectionView x:Name="CvProducts"
-                            SelectionMode="Single">
+                            SelectionMode="Single"
+                            SelectionChanged="CvProducts_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="2" />
@@ -45,8 +46,13 @@
                                    HeightRequest="150"
                                    WidthRequest="150" 
                                    Source="{Binding FullImageUrl}"/>
-                            <Label TextColor="{StaticResource Black}" />
-                            <Label TextColor="{StaticResource LightRed}" />
+                            <Label TextColor="{StaticResource Black}"
+                                   Text="{Binding name}"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                <Label Text="₪"/>
+                                <Label TextColor="{StaticResource LightRed}" Text="{Binding price}" />
+                            </StackLayout>
+                           
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

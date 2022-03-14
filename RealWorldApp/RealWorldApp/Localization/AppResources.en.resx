@@ -120,6 +120,9 @@
   <data name="Accept Terms" xml:space="preserve">
     <value>By creating an account you agree to our Terms of Service and Privacy Policy</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
@@ -168,11 +171,17 @@
   <data name="PopularProducts" xml:space="preserve">
     <value>Popular Products</value>
   </data>
+  <data name="ProductDetail" xml:space="preserve">
+    <value>Product Detail</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Total Price</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>

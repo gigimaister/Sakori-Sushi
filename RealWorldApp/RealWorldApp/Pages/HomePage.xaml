@@ -146,7 +146,9 @@
                     <Image HorizontalOptions="Start"                          
                            Margin="0,0,20,0"
                            Source="menu.png"
-                           HeightRequest="30">
+                           HeightRequest="30"
+                           RotationY="180">
+                        
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="ImgMenu" Tapped="ImgMenu_Tapped"/>
                         </Image.GestureRecognizers>

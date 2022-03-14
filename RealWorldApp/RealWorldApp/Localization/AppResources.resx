@@ -120,6 +120,9 @@
   <data name="Accept Terms" xml:space="preserve">
     <value>בהרשמה  אני מסכים\ה לתנאי השימוש ו-הפרטיות</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>הוספה לעגלה</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>עגלה</value>
   </data>
@@ -168,11 +171,17 @@
   <data name="PopularProducts" xml:space="preserve">
     <value>מוצרים פופולריים</value>
   </data>
+  <data name="ProductDetail" xml:space="preserve">
+    <value>תיאור מוצר</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>הרשמה</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>כניסה</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>מחיר</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>ברוכים הבאים </value>

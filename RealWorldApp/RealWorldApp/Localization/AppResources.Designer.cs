@@ -70,6 +70,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to הוספה לעגלה.
+        /// </summary>
+        internal static string AddToCart {
+            get {
+                return ResourceManager.GetString("AddToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to עגלה.
         /// </summary>
         internal static string Cart {
@@ -214,6 +223,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to תיאור מוצר.
+        /// </summary>
+        internal static string ProductDetail {
+            get {
+                return ResourceManager.GetString("ProductDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הרשמה.
         /// </summary>
         internal static string Register {
@@ -228,6 +246,15 @@ namespace RealWorldApp.Localization {
         internal static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מחיר.
+        /// </summary>
+        internal static string TotalPrice {
+            get {
+                return ResourceManager.GetString("TotalPrice", resourceCulture);
             }
         }
         
