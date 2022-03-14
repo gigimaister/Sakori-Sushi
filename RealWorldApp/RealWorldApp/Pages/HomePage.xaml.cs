@@ -85,7 +85,7 @@ namespace RealWorldApp.Pages
             // If Selection Is Null Do Nothing
             if (currentSelection == null) return;
             // Go To ProductListPage
-            Navigation.PushModalAsync(new ProductListPage());
+            Navigation.PushModalAsync(new ProductListPage(currentSelection.id, currentSelection.name));
             // When Navigting Back To HomePage We Want Unchecked Categories
             ((CollectionView)sender).SelectedItem = null;
         }

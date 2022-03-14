@@ -411,5 +411,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Sakori_Logo_Crop_circle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pexels_jay_abrantes.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

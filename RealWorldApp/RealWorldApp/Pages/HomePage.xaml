@@ -8,8 +8,8 @@
              x:Class="RealWorldApp.Pages.HomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-
         <Grid>
+
             <CollectionView x:Name="CvProducts"
                             SelectionMode="Single">
                 <CollectionView.ItemsLayout>

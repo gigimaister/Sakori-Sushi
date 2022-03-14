@@ -25,7 +25,8 @@
                        TextColor="{StaticResource LightRed}"
                        FontSize="Large"
                        FontAttributes="Bold"
-                       HorizontalTextAlignment="Center" />
+                       HorizontalTextAlignment="Center"
+                       />
             </Grid>
             <CollectionView x:Name="CvProducts"
                             SelectionMode="Single">
@@ -42,7 +43,8 @@
                             <Image Aspect="Fill"
                                    BackgroundColor="White"
                                    HeightRequest="150"
-                                   WidthRequest="150" />
+                                   WidthRequest="150" 
+                                   Source="{Binding FullImageUrl}"/>
                             <Label TextColor="{StaticResource Black}" />
                             <Label TextColor="{StaticResource LightRed}" />
                         </StackLayout>
