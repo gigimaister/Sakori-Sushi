@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,6 +27,7 @@ namespace RealWorldApp.Pages
             CategoriesCollection = new ObservableCollection<Category>();
             GetPopularProducts();
             GetCategories();
+            LblUserName.Text = Preferences.Get("userName", TraslatedMessages.Alert_Default_User_Name());
         }
 
 
@@ -58,13 +59,13 @@ namespace RealWorldApp.Pages
         private async void ImgMenu_Tapped(object sender, EventArgs e)
         {
             GridOverlay.IsVisible = true;
-            await SlMenu.TranslateTo(0, 0, 400, Easing.Linear);
+            await SlMenu.TranslateTo(0, 0, 100, Easing.Linear);
         }
 
         // To Close Menu(Grid Overlay) When User Click Out Side Of Menu
         private async void TapCloseMenu_Tapped(object sender, EventArgs e)
         {
-            await SlMenu.TranslateTo(250, 0, 400, Easing.Linear);
+            await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
             GridOverlay.IsVisible = false;
         }
     }

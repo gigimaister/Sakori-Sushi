@@ -189,7 +189,7 @@
                                    TextColor="{StaticResource Black}" />
                             <Label x:Name="LblUserName"
                                    FontSize="Small"
-                                   TextColor="{StaticResource White}" />
+                                   TextColor="{StaticResource Black}"/>
                         </StackLayout>
                     </Grid>
                     <StackLayout Spacing="30"
@@ -256,6 +256,8 @@
                             <TapGestureRecognizer x:Name="TapLogout" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
+                    <Label Text="גרסא ToDo" TextColor="Black"
+                           Margin="0,135,65,0" FontFamily="bold"/>
                 </StackLayout>
                 <BoxView Grid.Column="1" x:Name="BoxViewLayer">
                     <BoxView.GestureRecognizers>

@@ -53,7 +53,13 @@ namespace RealWorldApp
             if (userLanguage == "en") return EnglishMessages.Alert_pls_Check_pwds;
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_pls_Check_pwds;
-        }       
+        }
+        public static string Alert_Default_User_Name()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Default_User_Name;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Default_User_Name;
+        }
     }
 
     #region Languages
@@ -66,6 +72,7 @@ namespace RealWorldApp
         public static string Alert_Something_Went_Wrong = "Something Went Wrong...";
         public static string Alert_Pwd_Missmatch = "The Psswords Doesn't Match!";
         public static string Alert_pls_Check_pwds = "Please Make Sure The Passwords Match!";
+        public static string Alert_Default_User_Name = "Guest";
     }
     public static class HebrewMessages
     {
@@ -76,6 +83,7 @@ namespace RealWorldApp
         public static string Alert_Something_Went_Wrong = "משהו השתבש...";
         public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
         public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
+        public static string Alert_Default_User_Name = "אורח/ת";
     }
     public static class RussionMessages
     {
@@ -86,6 +94,7 @@ namespace RealWorldApp
         public static string Alert_Something_Went_Wrong = "משהו השתבש...";
         public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
         public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
+        public static string Alert_Default_User_Name = "אורח/ת";
     }
     #endregion
 

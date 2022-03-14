@@ -151,7 +151,7 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to היי (:.
+        ///   Looks up a localized string similar to היי .
         /// </summary>
         internal static string Hi {
             get {
