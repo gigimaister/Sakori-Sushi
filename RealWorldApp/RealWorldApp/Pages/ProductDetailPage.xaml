@@ -93,7 +93,8 @@
                             Text="{translator:Translate AddToCart}"
                             HorizontalOptions="FillAndExpand"
                             BackgroundColor="{StaticResource LightRed}"
-                            TextColor="{StaticResource White}" />
+                            TextColor="{StaticResource White}"
+                            Clicked="BtnAddToCart_Clicked"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

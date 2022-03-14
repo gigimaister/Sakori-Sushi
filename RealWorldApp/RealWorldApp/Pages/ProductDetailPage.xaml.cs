@@ -1,4 +1,6 @@
-﻿using RealWorldApp.Services;
+﻿using RealWorldApp.Models;
+using RealWorldApp.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,10 +9,12 @@ namespace RealWorldApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductDetailPage : ContentPage
     {
+        private int _productId;
         public ProductDetailPage(int productId)
         {
             InitializeComponent();
             GetProductDetails(productId);
+            _productId = productId;
         }
 
         // Get Product Details
@@ -29,6 +33,29 @@ namespace RealWorldApp.Pages
         private void TapBack_Tapped(object sender, System.EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        // Add To Cart Button
+        private async void BtnAddToCart_Clicked(object sender, System.EventArgs e)
+        {
+            var addToCart = new AddToCart();
+            addToCart.Qty = LblQty.Text;
+            addToCart.Price = LblPrice.Text;
+            addToCart.TotalAmount = LblTotalPrice.Text;
+            addToCart.ProductId = _productId;
+            addToCart.CustomerId = Preferences.Get("userId", 0);
+
+            var response = await ApiService.AddItemsInCart(addToCart);
+
+            // If Added Successfuly
+            if (response)
+            {
+                await DisplayAlert("", TraslatedMessages.Alert_Added_Items_To_Cart(), TraslatedMessages.Alert_Dismiss());
+            }
+            else
+            {
+                await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
+            }
         }
     }
 }

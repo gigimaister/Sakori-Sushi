@@ -60,6 +60,12 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_Default_User_Name;
         }
+        public static string Alert_Added_Items_To_Cart()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Added_Items_To_Cart;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Added_Items_To_Cart;
+        }
     }
 
     #region Languages
@@ -73,6 +79,7 @@ namespace RealWorldApp
         public static string Alert_Pwd_Missmatch = "The Psswords Doesn't Match!";
         public static string Alert_pls_Check_pwds = "Please Make Sure The Passwords Match!";
         public static string Alert_Default_User_Name = "Guest";
+        public static string Alert_Added_Items_To_Cart = "Your Items Has Been Added To The Cart!";
     }
     public static class HebrewMessages
     {
@@ -84,6 +91,7 @@ namespace RealWorldApp
         public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
         public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
         public static string Alert_Default_User_Name = "אורח/ת";
+        public static string Alert_Added_Items_To_Cart = "הפריט נוסף לעגלה";
     }
     public static class RussionMessages
     {

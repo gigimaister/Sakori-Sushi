@@ -181,7 +181,7 @@ namespace RealWorldApp.Services
         #region POST
 
         // Add Item To Cart
-        public async Task<bool> AddItemsInCart(AddToCart addToCart)
+        public static async Task<bool> AddItemsInCart(AddToCart addToCart)
         {       
             using (var httpClient = new HttpClient())
             {
