@@ -97,7 +97,6 @@ namespace RealWorldApp.Pages
             Navigation.PushModalAsync(new CartPage());
         }
 
-
         #region Menu
         // My Orders Tapped
         private void TapOrders_Tapped(object sender, EventArgs e)
@@ -106,7 +105,6 @@ namespace RealWorldApp.Pages
         }
         #endregion
 
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -114,10 +112,10 @@ namespace RealWorldApp.Pages
             var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
             LblTotalItems.Text = response.totalItems.ToString();
         }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            // Close Hamburger Menu (When We Come Back To Main Page We Want Hamburger Menu Closed)
             CloseHamburgerMenu();
         }
         private async void CloseHamburgerMenu()
