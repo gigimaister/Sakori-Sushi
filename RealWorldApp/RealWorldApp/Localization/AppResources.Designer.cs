@@ -70,6 +70,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to כתובת.
+        /// </summary>
+        internal static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הוספה לעגלה.
         /// </summary>
         internal static string AddToCart {
@@ -205,6 +214,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to שם.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to התפריט שלנו.
         /// </summary>
         internal static string OurMenu {
@@ -219,6 +237,33 @@ namespace RealWorldApp.Localization {
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טלפון.
+        /// </summary>
+        internal static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ביצוע הזמנה.
+        /// </summary>
+        internal static string PlaceMyOrder {
+            get {
+                return ResourceManager.GetString("PlaceMyOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הזמנה.
+        /// </summary>
+        internal static string PlaceOrder {
+            get {
+                return ResourceManager.GetString("PlaceOrder", resourceCulture);
             }
         }
         
@@ -246,6 +291,15 @@ namespace RealWorldApp.Localization {
         internal static string ProductDetail {
             get {
                 return ResourceManager.GetString("ProductDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to פרטי המזמין.
+        /// </summary>
+        internal static string ProvideDetails {
+            get {
+                return ResourceManager.GetString("ProvideDetails", resourceCulture);
             }
         }
         

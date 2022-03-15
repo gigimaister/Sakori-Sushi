@@ -30,6 +30,7 @@ namespace RealWorldApp.Pages
             // If Login Successfull 
             if (response)
             {
+                // Move To Home Page
                 Application.Current.MainPage = new NavigationPage(new HomePage());
             }
             else

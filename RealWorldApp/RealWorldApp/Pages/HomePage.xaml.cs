@@ -66,14 +66,6 @@ namespace RealWorldApp.Pages
             GridOverlay.IsVisible = false;
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
-            var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
-            LblTotalItems.Text = response.totalItems.ToString();
-        }
-
         // Category Clicked
         private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -104,6 +96,14 @@ namespace RealWorldApp.Pages
         private void TapCartIcon_Tapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new CartPage());
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
+            var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
+            LblTotalItems.Text = response.totalItems.ToString();
         }
     }
 }

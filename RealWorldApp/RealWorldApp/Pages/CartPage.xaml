@@ -37,7 +37,7 @@
                        VerticalTextAlignment="End"
                        HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="TapClearCart" />
+                        <TapGestureRecognizer x:Name="TapClearCart"  Tapped="TapClearCart_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
@@ -51,21 +51,26 @@
                         <ViewCell>
                             <StackLayout Margin="20,10,20,10">
                                 <Label TextColor="{StaticResource LightRed}"
-                                       FontSize="Medium" />
+                                       FontSize="Medium" 
+                                       Text="{Binding productName}"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Label CharacterSpacing="1"
                                            TextColor="{StaticResource LightBrown}"
-                                           FontSize="Medium" />
+                                           FontSize="Medium"
+                                           HorizontalOptions="StartAndExpand"
+                                           Text="{Binding totalAmount, StringFormat='₪ {0}'}"/>
+                                    <Label CharacterSpacing="1"
+                                           TextColor="{StaticResource LightBrown}"
+                                           FontSize="Medium"
+                                           Text="{Binding qty}"/>
                                     <Label Text="X"
                                            TextColor="{StaticResource LightBrown}"
                                            FontSize="Medium" />
                                     <Label CharacterSpacing="1"
                                            TextColor="{StaticResource LightBrown}"
-                                           FontSize="Medium" />
-                                    <Label CharacterSpacing="1"
-                                           TextColor="{StaticResource LightBrown}"
-                                           FontSize="Medium"
-                                           HorizontalOptions="EndAndExpand" />
+                                           FontSize="Medium" 
+                                           Text="{Binding price}"/>
+
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
@@ -93,7 +98,7 @@
                         BackgroundColor="{StaticResource LightRed}"
                         TextColor="{StaticResource White}"
                         Text="{translator:Translate Proceed}"
-                        x:Name="BtnProceed" />
+                        x:Name="BtnProceed"  Clicked="BtnProceed_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

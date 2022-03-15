@@ -17,6 +17,14 @@ namespace RealWorldApp.Pages
             InitializeComponent();
             ShoppingCartItemCollection = new ObservableCollection<ShoppingCartItem>();
             GetShoppingCartItems();
+            GetTotalPrice();
+        }
+
+        // GET Total Price
+        private async void GetTotalPrice()
+        {
+            var totalPrice = await ApiService.GetCartSubTotal(Preferences.Get("userId", 0));
+            LblTotalPrice.Text = totalPrice.subTotal.ToString();
         }
 
         // GET Shopping Cart Items
@@ -32,11 +40,32 @@ namespace RealWorldApp.Pages
             LvShoppingCart.ItemsSource = ShoppingCartItemCollection;
         }
 
-
         // Back Arrow Tapped
         private void TapBack_Tapped(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        // Clear Cart
+        private async void TapClearCart_Tapped(object sender, EventArgs e)
+        {
+            var response = await ApiService.ClearShoppingCart(Preferences.Get("userId", 0));
+            if (response)
+            {
+                await DisplayAlert("", TraslatedMessages.Alert_Cleared_Cart(), TraslatedMessages.Alert_Dismiss());
+                LvShoppingCart.ItemsSource = null;
+                LblTotalPrice.Text = "0";               
+            }
+            else
+            {
+                await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
+            }
+        }
+
+        // Proceed Button Clicked
+        private void BtnProceed_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new PlaceOrderPage());
         }
     }
 }
