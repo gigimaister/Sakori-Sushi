@@ -165,11 +165,20 @@
   <data name="Logout" xml:space="preserve">
     <value>יציאה</value>
   </data>
+  <data name="MadeOn" xml:space="preserve">
+    <value>בוצעה ב</value>
+  </data>
   <data name="MyOrders" xml:space="preserve">
     <value>ההזמנות שלי</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>שם</value>
+  </data>
+  <data name="OrderNum" xml:space="preserve">
+    <value>הזמנה מס</value>
+  </data>
+  <data name="OrdersHistory" xml:space="preserve">
+    <value>היסטוריית הזמנות</value>
   </data>
   <data name="OurMenu" xml:space="preserve">
     <value>התפריט שלנו</value>
@@ -203,6 +212,9 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>כניסה</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>סהכ</value>
   </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>מחיר</value>

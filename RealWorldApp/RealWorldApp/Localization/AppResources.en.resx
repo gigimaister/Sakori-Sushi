@@ -165,11 +165,20 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="MadeOn" xml:space="preserve">
+    <value>Made On</value>
+  </data>
   <data name="MyOrders" xml:space="preserve">
     <value>My Orders</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="OrderNum" xml:space="preserve">
+    <value>Order No.</value>
+  </data>
+  <data name="OrdersHistory" xml:space="preserve">
+    <value>Orders History</value>
   </data>
   <data name="OurMenu" xml:space="preserve">
     <value>Our Menu</value>
@@ -203,6 +212,9 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>Total Price</value>

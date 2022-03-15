@@ -205,6 +205,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בוצעה ב.
+        /// </summary>
+        internal static string MadeOn {
+            get {
+                return ResourceManager.GetString("MadeOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ההזמנות שלי.
         /// </summary>
         internal static string MyOrders {
@@ -219,6 +228,24 @@ namespace RealWorldApp.Localization {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הזמנה מס.
+        /// </summary>
+        internal static string OrderNum {
+            get {
+                return ResourceManager.GetString("OrderNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to היסטוריית הזמנות.
+        /// </summary>
+        internal static string OrdersHistory {
+            get {
+                return ResourceManager.GetString("OrdersHistory", resourceCulture);
             }
         }
         
@@ -318,6 +345,15 @@ namespace RealWorldApp.Localization {
         internal static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סהכ.
+        /// </summary>
+        internal static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
             }
         }
         

@@ -60,10 +60,9 @@ namespace RealWorldApp.Pages
         }
 
         // To Close Menu(Grid Overlay) When User Click Out Side Of Menu
-        private async void TapCloseMenu_Tapped(object sender, EventArgs e)
+        private void TapCloseMenu_Tapped(object sender, EventArgs e)
         {
-            await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
-            GridOverlay.IsVisible = false;
+            CloseHamburgerMenu();
         }
 
         // Category Clicked
@@ -98,6 +97,16 @@ namespace RealWorldApp.Pages
             Navigation.PushModalAsync(new CartPage());
         }
 
+
+        #region Menu
+        // My Orders Tapped
+        private void TapOrders_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new OrdersPage());
+        }
+        #endregion
+
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -105,5 +114,17 @@ namespace RealWorldApp.Pages
             var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
             LblTotalItems.Text = response.totalItems.ToString();
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            CloseHamburgerMenu();
+        }
+        private async void CloseHamburgerMenu()
+        {
+            await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
+            GridOverlay.IsVisible = false;
+        }
+        
     }
 }
