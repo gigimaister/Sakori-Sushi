@@ -31,7 +31,7 @@
                 <Label Grid.Column="2"
                        TextColor="{StaticResource LightRed}"
                        Text="{translator:Translate Clear}"
-                       FontSize="15"
+                       FontSize="14"
                        CharacterSpacing="1"
                        FontAttributes="Bold"
                        VerticalTextAlignment="End"

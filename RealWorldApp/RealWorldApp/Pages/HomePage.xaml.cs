@@ -14,6 +14,8 @@ namespace RealWorldApp.Pages
     {
         // ObservCol For Popular Products
         public ObservableCollection<PopularProduct> ProductCollection;
+        // Bool To Prevent Duoble Click
+        public bool IsClickedOnce;
 
         // ObservCol For Categories
         public ObservableCollection<Category> CategoriesCollection;
@@ -22,6 +24,7 @@ namespace RealWorldApp.Pages
             InitializeComponent();
             ProductCollection = new ObservableCollection<PopularProduct>();
             CategoriesCollection = new ObservableCollection<Category>();
+            
             GetPopularProducts();
             GetCategories();
             LblUserName.Text = Preferences.Get("userName", TraslatedMessages.Alert_Default_User_Name());
@@ -68,6 +71,14 @@ namespace RealWorldApp.Pages
         // Category Clicked
         private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce)
+            {
+                // When Navigting Back To Product List Page We Want Unchecked Categories
+                ((CollectionView)sender).SelectedItem = null;
+                return;
+            }
+            IsClickedOnce = true;
             // Get Current Category Selection
             var currentSelection = e.CurrentSelection.FirstOrDefault() as Category;
             // If Selection Is Null Do Nothing
@@ -81,6 +92,14 @@ namespace RealWorldApp.Pages
         // Popular Products Clicked 
         private void CvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce)
+            {
+                // When Navigting Back To Product List Page We Want Unchecked Categories
+                ((CollectionView)sender).SelectedItem = null;
+                return;
+            }            
+            IsClickedOnce = true;
             // Get Current Category Selection
             var currentSelection = e.CurrentSelection.FirstOrDefault() as PopularProduct;
             // If Selection Is Null Do Nothing
@@ -94,7 +113,10 @@ namespace RealWorldApp.Pages
         // Cart Icon Tapped
         private void TapCartIcon_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new CartPage());
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
+            Navigation.PushModalAsync(new CartPage());         
         }
 
         #region Menu
@@ -111,6 +133,8 @@ namespace RealWorldApp.Pages
             // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
             var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
             LblTotalItems.Text = response.totalItems.ToString();
+            IsClickedOnce = false;
+            
         }
         protected override void OnDisappearing()
         {

@@ -5,7 +5,8 @@ namespace RealWorldApp
 {
     public static class AppSettings
     {
-        public static string ApiUrl = "http://192.168.254.83:45457";
+        public static string ApiUrl2 = "http://192.168.254.83:45457";
+        public static string ApiUrl = "http://192.168.43.179:45455";
     }
 
     public static class TraslatedMessages
@@ -72,6 +73,12 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_Cleared_Cart;
         }
+        public static string Alert_No_Items_In_Cart()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_No_Items_In_Cart;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_No_Items_In_Cart;
+        }
     }
 
     #region Languages
@@ -87,6 +94,7 @@ namespace RealWorldApp
         public static string Alert_Default_User_Name = "Guest";
         public static string Alert_Added_Items_To_Cart = "Your Items Has Been Added To The Cart!";
         public static string Alert_Cleared_Cart = "Your Cart Has Been Cleared";
+        public static string Alert_No_Items_In_Cart = "No Items In The Cart";
     }
     public static class HebrewMessages
     {
@@ -100,6 +108,7 @@ namespace RealWorldApp
         public static string Alert_Default_User_Name = "אורח/ת";
         public static string Alert_Added_Items_To_Cart = "הפריט נוסף לעגלה";
         public static string Alert_Cleared_Cart = "כל הפריטים הוסרו מהעגלה";
+        public static string Alert_No_Items_In_Cart = "אין פריטים בעגלה";
     }
     public static class RussionMessages
     {

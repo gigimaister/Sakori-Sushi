@@ -49,6 +49,13 @@ namespace RealWorldApp.Pages
         // Clear Cart
         private async void TapClearCart_Tapped(object sender, EventArgs e)
         {
+            // If We Don't Have Any Items In Cart Show Alert
+            if (LvShoppingCart.ItemsSource == null || ShoppingCartItemCollection.Count == 0)
+            {
+                await DisplayAlert("", TraslatedMessages.Alert_No_Items_In_Cart(), TraslatedMessages.Alert_Dismiss());
+                return;
+            }
+
             var response = await ApiService.ClearShoppingCart(Preferences.Get("userId", 0));
             if (response)
             {
