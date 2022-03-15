@@ -11,7 +11,8 @@
         <Grid>
 
             <CollectionView x:Name="CvProducts"
-                            SelectionMode="Single">
+                            SelectionMode="Single"
+                            SelectionChanged="CvProducts_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="2" />
@@ -140,7 +141,7 @@
                                    TextColor="White" />
                         </Frame>
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapCartIcon" />
+                            <TapGestureRecognizer x:Name="TapCartIcon"  Tapped="TapCartIcon_Tapped"/>
                         </Grid.GestureRecognizers>
                     </Grid>
                     <Image HorizontalOptions="Start"                          

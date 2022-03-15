@@ -126,6 +126,9 @@
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>ConfirmPassword</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="PopularProducts" xml:space="preserve">
     <value>Popular Products</value>
   </data>
+  <data name="Proceed" xml:space="preserve">
+    <value>Proceed</value>
+  </data>
   <data name="ProductDetail" xml:space="preserve">
     <value>Product Detail</value>
   </data>
@@ -185,5 +191,8 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
+  </data>
+  <data name="YourCart" xml:space="preserve">
+    <value>Your Cart</value>
   </data>
 </root>

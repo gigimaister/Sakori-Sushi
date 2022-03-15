@@ -74,7 +74,7 @@ namespace RealWorldApp.Pages
             LblTotalItems.Text = response.totalItems.ToString();
         }
 
-        // When User Clicked On Category
+        // Category Clicked
         private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Get Current Category Selection
@@ -85,6 +85,25 @@ namespace RealWorldApp.Pages
             Navigation.PushModalAsync(new ProductListPage(currentSelection.id, currentSelection.name));
             // When Navigting Back To HomePage We Want Unchecked Categories
             ((CollectionView)sender).SelectedItem = null;
+        }
+
+        // Popular Products Clicked 
+        private void CvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Get Current Category Selection
+            var currentSelection = e.CurrentSelection.FirstOrDefault() as PopularProduct;
+            // If Selection Is Null Do Nothing
+            if (currentSelection == null) return;
+            // Go To Product Detail Page
+            Navigation.PushModalAsync(new ProductDetailPage(currentSelection.id));
+            // When Navigting Back To Product List Page We Want Unchecked Categories
+            ((CollectionView)sender).SelectedItem = null;
+        }
+
+        // Cart Icon Tapped
+        private void TapCartIcon_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new CartPage());
         }
     }
 }
