@@ -65,7 +65,7 @@ namespace RealWorldApp.Pages
         // Proceed Button Clicked
         private void BtnProceed_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new PlaceOrderPage());
+            Navigation.PushModalAsync(new PlaceOrderPage(Convert.ToDouble(LblTotalPrice.Text)));
         }
     }
 }

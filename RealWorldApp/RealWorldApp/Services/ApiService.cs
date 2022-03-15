@@ -196,7 +196,7 @@ namespace RealWorldApp.Services
         }
 
         // Place Order
-        public async Task<OrderResponse> PlaceOrder(Order order)
+        public static async Task<OrderResponse> PlaceOrder(Order order)
         {
             using (var httpClient = new HttpClient())
             {

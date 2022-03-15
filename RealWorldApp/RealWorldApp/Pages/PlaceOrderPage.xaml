@@ -65,7 +65,8 @@
                     BackgroundColor="{StaticResource LightRed}"
                     TextColor="{StaticResource White}"
                     x:Name="BtnPlaceOrder" 
-                        Style="{StaticResource MainBtnStyle}"/>
+                        Style="{StaticResource MainBtnStyle}"
+                        Clicked="BtnPlaceOrder_Clicked"/>
             </StackLayout>
         </ScrollView>
        
