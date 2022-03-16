@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
+using UnixTimeStamp;
 
 namespace RealWorldApp.Services
 {
-    public class ApiService
+    public static class ApiService
     {
         #region AUTHORIZATION
 
@@ -58,6 +59,8 @@ namespace RealWorldApp.Services
             Preferences.Set("accessToken", result.access_token);
             Preferences.Set("userId", result.user_Id);
             Preferences.Set("userName", result.user_name);
+            Preferences.Set("tokenExpirationTime", result.expiration_Time);
+            Preferences.Set("currentTime", UnixTime.GetCurrentTime());
 
             return true;
 
@@ -70,7 +73,10 @@ namespace RealWorldApp.Services
         public static async Task<List<Category>> GetCategories()
         {
             using (var httpClient = new  HttpClient())
-            {               
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Categories");
                 var json = JsonConvert.DeserializeObject<List<Category>>(response);
@@ -82,7 +88,10 @@ namespace RealWorldApp.Services
         public static async Task<Product> GetProductById(int productId)
         {
             using (var httpClient = new HttpClient())
-            {              
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/{productId}");
                 var json = JsonConvert.DeserializeObject<Product>(response);
@@ -95,6 +104,9 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/ProductsByCategory/{categoryId}");
                 var json = JsonConvert.DeserializeObject<List<ProductByCategory>>(response);
@@ -107,6 +119,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/PopularProducts");
                 var json = JsonConvert.DeserializeObject<List<PopularProduct>>(response);
@@ -119,6 +133,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/SubTotal/{userId}");
                 var json = JsonConvert.DeserializeObject<CartSubTotal>(response);
@@ -131,6 +147,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/{userId}");
                 var json = JsonConvert.DeserializeObject<List<ShoppingCartItem>>(response);
@@ -143,6 +161,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/TotalItems/{userId}");
                 var json = JsonConvert.DeserializeObject<TotalCartItem>(response);
@@ -155,6 +175,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Orders/OrdersByUser/{userId}");
                 var json = JsonConvert.DeserializeObject<List<OrderByUser>>(response);
@@ -167,6 +189,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Orders/OrderDetails/{orderId}");
                 var json = JsonConvert.DeserializeObject<List<Order>>(response);
@@ -185,6 +209,8 @@ namespace RealWorldApp.Services
         {       
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var json = JsonConvert.SerializeObject(addToCart);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -200,6 +226,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var json = JsonConvert.SerializeObject(order);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -225,6 +253,8 @@ namespace RealWorldApp.Services
         {
             using (var httpClient = new HttpClient())
             {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
                 var response = await httpClient.DeleteAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/{userId}");
                 if (!response.IsSuccessStatusCode) return false;
@@ -232,5 +262,24 @@ namespace RealWorldApp.Services
             }
         }
         #endregion
+    }
+
+    public static class TokenValidator
+    {
+        // Check If Token Expire
+        public async static Task CheckTokenValidity() 
+        {
+            var expirationTime = Preferences.Get("tokenExpirationTime", 0);
+            Preferences.Set("currentTime", UnixTime.GetCurrentTime());
+            var currentTime = Preferences.Get("currentTime", 0);
+
+            // If We Need To Get New Token
+            if (expirationTime < currentTime)
+            {
+                var email = Preferences.Get("email", string.Empty);
+                var password = Preferences.Get("password", string.Empty);
+                await ApiService.Login(email, password);
+            }
+        }
     }
 }
