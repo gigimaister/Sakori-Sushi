@@ -1,5 +1,6 @@
 ﻿using RealWorldApp.Models;
 using RealWorldApp.Services;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -59,6 +60,21 @@ namespace RealWorldApp.Pages
             }
         }
 
-        
+        // Plus Button Tapped
+        private void TapIncrement_Tapped(object sender, System.EventArgs e)
+        {
+            var LblQtyInt = Convert.ToInt32(LblQty.Text);
+            LblQtyInt += 1;
+            LblQty.Text = LblQtyInt.ToString();
+        }
+
+        // Minus Button Tapped
+        private void TapDecrement_Tapped(object sender, EventArgs e)
+        {
+            if (LblQty.Text == "1") return;
+            var LblQtyInt = Convert.ToInt32(LblQty.Text);
+            LblQtyInt -= 1;           
+            LblQty.Text = LblQtyInt.ToString();
+        }
     }
 }

@@ -58,7 +58,7 @@
                     <Image HeightRequest="40"
                            Source="minus.png">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapDecrement" />
+                            <TapGestureRecognizer x:Name="TapDecrement" Tapped="TapDecrement_Tapped"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Label x:Name="LblQty"
@@ -69,7 +69,7 @@
                     <Image HeightRequest="40"
                            Source="plus.png">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapIncrement" />
+                            <TapGestureRecognizer x:Name="TapIncrement" Tapped="TapIncrement_Tapped" />
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
