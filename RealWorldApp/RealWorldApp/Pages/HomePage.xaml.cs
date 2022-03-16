@@ -160,6 +160,14 @@ namespace RealWorldApp.Pages
             GridOverlay.IsVisible = false;
         }
 
-        
+        // Logout
+        private void TapLogout_Tapped(object sender, EventArgs e)
+        {
+            Preferences.Set("accessToken", string.Empty);
+            Preferences.Set("tokenExpirationTime", 0);
+            Application.Current.MainPage = new NavigationPage(new SignUpPage());
+
+
+        }
     }
 }
