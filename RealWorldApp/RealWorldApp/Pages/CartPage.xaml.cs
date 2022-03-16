@@ -11,13 +11,18 @@ namespace RealWorldApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CartPage : ContentPage
     {
+        // ObservCol For Shopping CartItems
         public ObservableCollection<ShoppingCartItem> ShoppingCartItemCollection;
+        // Bool To Prevent Duoble Click
+        public bool IsClickedOnce;
+        // Bool Prevent For Proceed Buttin Click
+        public bool IsProceedBtnClick;
         public CartPage()
         {
             InitializeComponent();
             ShoppingCartItemCollection = new ObservableCollection<ShoppingCartItem>();
             GetShoppingCartItems();
-            GetTotalPrice();
+            GetTotalPrice();        
         }
 
         // GET Total Price
@@ -38,6 +43,13 @@ namespace RealWorldApp.Pages
             }
 
             LvShoppingCart.ItemsSource = ShoppingCartItemCollection;
+
+            // If We Don't Have Any Items In Cart Disabled Proceed Button
+            if (LvShoppingCart.ItemsSource == null || ShoppingCartItemCollection.Count == 0)
+            {
+                BtnProceed.IsEnabled = false;
+                return;
+            }
         }
 
         // Back Arrow Tapped
@@ -61,7 +73,8 @@ namespace RealWorldApp.Pages
             {
                 await DisplayAlert("", TraslatedMessages.Alert_Cleared_Cart(), TraslatedMessages.Alert_Dismiss());
                 LvShoppingCart.ItemsSource = null;
-                LblTotalPrice.Text = "0";               
+                LblTotalPrice.Text = "0";
+                BtnProceed.IsEnabled = false;
             }
             else
             {
@@ -72,7 +85,18 @@ namespace RealWorldApp.Pages
         // Proceed Button Clicked
         private void BtnProceed_Clicked(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             Navigation.PushModalAsync(new PlaceOrderPage(Convert.ToDouble(LblTotalPrice.Text)));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();          
+            // Init Duplicate Click Preventor
+            IsClickedOnce = false;
+          
         }
     }
 }

@@ -11,7 +11,11 @@ namespace RealWorldApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductListPage : ContentPage
     {
+        // ObservCol For Product By Category
         public ObservableCollection<ProductByCategory> ProductByCategoryCollection;
+
+        // Bool To Prevent Duoble Click
+        public bool IsClickedOnce;
         public ProductListPage(int categoryId, string categoryName)
         {
             InitializeComponent();
@@ -20,6 +24,7 @@ namespace RealWorldApp.Pages
             GetProducts(categoryId);      
         }
 
+        // GET Products
         private async void GetProducts(int id)
         {
             var products = await ApiService.GetProductByCategory(id);
@@ -39,6 +44,15 @@ namespace RealWorldApp.Pages
         // When User Click On Product => Go To Product Detail Page
         private  void CvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) 
+            {
+                // When Navigting Back To Home Page We Want Unchecked Categories
+                ((CollectionView)sender).SelectedItem = null;
+                return;
+            } 
+            IsClickedOnce = true;
+
             // Get Current Category Selection
             var currentSelection = e.CurrentSelection.FirstOrDefault() as ProductByCategory;
             // If Selection Is Null Do Nothing
@@ -47,6 +61,14 @@ namespace RealWorldApp.Pages
             Navigation.PushModalAsync(new ProductDetailPage(currentSelection.id));
             // When Navigting Back To Product List Page We Want Unchecked Categories
             ((CollectionView)sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            // Init Duplicate Click Preventor
+            IsClickedOnce = false;
+
         }
     }
 }

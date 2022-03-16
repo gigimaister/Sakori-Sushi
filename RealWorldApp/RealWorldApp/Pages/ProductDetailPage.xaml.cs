@@ -10,6 +10,7 @@ namespace RealWorldApp.Pages
     public partial class ProductDetailPage : ContentPage
     {
         private int _productId;
+        
         public ProductDetailPage(int productId)
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace RealWorldApp.Pages
 
         // Add To Cart Button
         private async void BtnAddToCart_Clicked(object sender, System.EventArgs e)
-        {
+        {            
             var addToCart = new AddToCart();
             addToCart.Qty = LblQty.Text;
             addToCart.Price = LblPrice.Text;
@@ -57,5 +58,7 @@ namespace RealWorldApp.Pages
                 await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
             }
         }
+
+        
     }
 }

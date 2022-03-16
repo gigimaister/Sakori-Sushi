@@ -123,19 +123,41 @@ namespace RealWorldApp.Pages
         // My Orders Tapped
         private void TapOrders_Tapped(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             Navigation.PushModalAsync(new OrdersPage());
         }
 
         // Contact Us Tapped
         private void TapContact_Tapped(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             Navigation.PushModalAsync(new ContactPage());
         }
 
         // Cart Menu Tapped
         private void TapCart_Tapped(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             Navigation.PushModalAsync(new CartPage());
+        }
+
+        // Logout
+        private void TapLogout_Tapped(object sender, EventArgs e)
+        {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
+            Preferences.Set("accessToken", string.Empty);
+            Preferences.Set("tokenExpirationTime", 0);
+            Application.Current.MainPage = new NavigationPage(new SignUpPage());
+
+
         }
         #endregion
 
@@ -145,6 +167,7 @@ namespace RealWorldApp.Pages
             // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
             var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
             LblTotalItems.Text = response.totalItems.ToString();
+            // Init Duplicate Click Preventor
             IsClickedOnce = false;
             
         }
@@ -158,16 +181,6 @@ namespace RealWorldApp.Pages
         {
             await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
             GridOverlay.IsVisible = false;
-        }
-
-        // Logout
-        private void TapLogout_Tapped(object sender, EventArgs e)
-        {
-            Preferences.Set("accessToken", string.Empty);
-            Preferences.Set("tokenExpirationTime", 0);
-            Application.Current.MainPage = new NavigationPage(new SignUpPage());
-
-
-        }
+        } 
     }
 }
