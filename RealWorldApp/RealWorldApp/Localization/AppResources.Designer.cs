@@ -88,6 +88,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to חיוג.
+        /// </summary>
+        internal static string Call {
+            get {
+                return ResourceManager.GetString("Call", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to עגלה.
         /// </summary>
         internal static string Cart {
@@ -147,6 +156,15 @@ namespace RealWorldApp.Localization {
         internal static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טלפון ליצירת קשר.
+        /// </summary>
+        internal static string ForFurtherSupport {
+            get {
+                return ResourceManager.GetString("ForFurtherSupport", resourceCulture);
             }
         }
         

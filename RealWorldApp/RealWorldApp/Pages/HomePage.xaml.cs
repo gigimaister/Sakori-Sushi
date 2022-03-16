@@ -125,6 +125,18 @@ namespace RealWorldApp.Pages
         {
             Navigation.PushModalAsync(new OrdersPage());
         }
+
+        // Contact Us Tapped
+        private void TapContact_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new ContactPage());
+        }
+
+        // Cart Menu Tapped
+        private void TapCart_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new CartPage());
+        }
         #endregion
 
         protected async override void OnAppearing()
@@ -147,6 +159,7 @@ namespace RealWorldApp.Pages
             await SlMenu.TranslateTo(250, 0, 100, Easing.Linear);
             GridOverlay.IsVisible = false;
         }
+
         
     }
 }

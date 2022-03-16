@@ -38,19 +38,22 @@
                                     <StackLayout>
                                         <Label Text="{translator:Translate OrderNum}"
                                                TextColor="Gray" />
-                                        <Label TextColor="{StaticResource LightRed}" />
+                                        <Label TextColor="{StaticResource LightRed}"
+                                               Text="{Binding id}"/>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="EndAndExpand">
                                         <Label Text="{translator:Translate MadeOn}"
                                                TextColor="Gray" />
-                                        <Label TextColor="Black" />
+                                        <Label TextColor="Black"
+                                               Text="{Binding orderPlaced}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{translator:Translate Total}"
                                            TextColor="Black" />
                                     <Label  HorizontalOptions="EndAndExpand"
-                                            TextColor="Black" />
+                                            TextColor="Black" 
+                                            Text="{Binding orderTotal, StringFormat='₪ {0}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

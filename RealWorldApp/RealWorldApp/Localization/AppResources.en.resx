@@ -126,6 +126,9 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Add To Cart</value>
   </data>
+  <data name="Call" xml:space="preserve">
+    <value>Call</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="ForFurtherSupport" xml:space="preserve">
+    <value>For further support you can call our helpline using the option below</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>

@@ -126,6 +126,9 @@
   <data name="AddToCart" xml:space="preserve">
     <value>הוספה לעגלה</value>
   </data>
+  <data name="Call" xml:space="preserve">
+    <value>חיוג</value>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>עגלה</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>אימייל</value>
+  </data>
+  <data name="ForFurtherSupport" xml:space="preserve">
+    <value>טלפון ליצירת קשר</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>שם מלא</value>

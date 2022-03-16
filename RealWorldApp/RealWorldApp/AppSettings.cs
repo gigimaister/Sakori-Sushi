@@ -5,8 +5,8 @@ namespace RealWorldApp
 {
     public static class AppSettings
     {
-        public static string ApiUrl2 = "http://192.168.254.83:45457";
-        public static string ApiUrl = "http://192.168.43.179:45455";
+        public static string ApiUrl = "http://192.168.254.83:45457";
+        public static string ApiUrl2 = "http://192.168.43.179:45455";
     }
 
     public static class TraslatedMessages
