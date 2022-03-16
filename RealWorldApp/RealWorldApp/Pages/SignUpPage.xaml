@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"           
              xmlns:translator="clr-namespace:RealWorldApp.Extensions"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.SignUpPage"
              BackgroundColor="{StaticResource PageBackgroundColor}"
@@ -12,6 +13,7 @@
     <ContentPage.Content>
 
         <ScrollView>
+
             <StackLayout Spacing="20"
                          Margin="25">
                 <Label TextColor="{StaticResource Black}"
@@ -24,7 +26,7 @@
                        HeightRequest="55"
                        Opacity="0.6">
                 </Image>
-
+               
                 <Frame HasShadow="True"
                        Padding="25"
                        Margin="0,30,0,0"

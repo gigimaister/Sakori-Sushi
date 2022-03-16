@@ -44,7 +44,7 @@ namespace RealWorldApp.Pages
 
         // User Clicked Login
         private async void BtnLogin_Clicked(object sender, EventArgs e)
-        {
+        {        
             // Redirect To Login
             await Navigation.PushModalAsync(new LoginPage());
 
@@ -53,6 +53,7 @@ namespace RealWorldApp.Pages
             EntEmail.Text = string.Empty;
             EntPassword.Text = string.Empty;
             EntConfirmPassword.Text = string.Empty;
+
         }
     }
 }

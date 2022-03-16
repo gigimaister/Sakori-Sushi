@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:translator="clr-namespace:RealWorldApp.Extensions"
+             xmlns:translator="clr-namespace:RealWorldApp.Extensions" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.HomePage"
              NavigationPage.HasNavigationBar="False">
@@ -12,7 +12,8 @@
 
             <CollectionView x:Name="CvProducts"
                             SelectionMode="Single"
-                            SelectionChanged="CvProducts_SelectionChanged">
+                            SelectionChanged="CvProducts_SelectionChanged"
+                            IsVisible="False">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="2" />
@@ -85,7 +86,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
-                  RowSpacing="0">
+                  RowSpacing="0" IsVisible="False" x:Name="GridMain">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
                     <RowDefinition Height="40" />
@@ -164,6 +165,13 @@
                        Grid.Row="0"
                        Grid.Column="1"
                        Grid.RowSpan="3" />
+            </Grid>
+            <Grid IsVisible="True" x:Name="GridLottieAnimation">
+                <StackLayout>
+                    <lottie:AnimationView x:Name="lottieAnimation" Animation="Lottie_Sushi_Animation.json" 
+                                          AutoPlay="True" WidthRequest="150" HeightRequest="150" 
+                                          RepeatMode="Infinite" Margin="100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </StackLayout>
             </Grid>
             <Grid x:Name="GridOverlay" IsVisible="False"
                   ColumnSpacing="0"

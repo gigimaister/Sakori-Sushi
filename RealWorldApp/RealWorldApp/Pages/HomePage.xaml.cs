@@ -21,13 +21,16 @@ namespace RealWorldApp.Pages
         public ObservableCollection<Category> CategoriesCollection;
         public HomePage()
         {
-            InitializeComponent();
-            ProductCollection = new ObservableCollection<PopularProduct>();
-            CategoriesCollection = new ObservableCollection<Category>();
             
+            InitializeComponent();          
+            ProductCollection = new ObservableCollection<PopularProduct>();
+            CategoriesCollection = new ObservableCollection<Category>();         
             GetPopularProducts();
-            GetCategories();
+            GetCategories();           
             LblUserName.Text = Preferences.Get("userName", TraslatedMessages.Alert_Default_User_Name());
+            CvProducts.IsVisible = true;
+            GridMain.IsVisible = true;
+            GridLottieAnimation.IsVisible = false;
         }
 
 
@@ -170,6 +173,7 @@ namespace RealWorldApp.Pages
             // Init Duplicate Click Preventor
             IsClickedOnce = false;
             
+
         }
         protected override void OnDisappearing()
         {
