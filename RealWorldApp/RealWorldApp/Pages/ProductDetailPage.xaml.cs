@@ -66,6 +66,8 @@ namespace RealWorldApp.Pages
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
             LblQtyInt += 1;
             LblQty.Text = LblQtyInt.ToString();
+            // Update Labael Total Price
+            LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
         }
 
         // Minus Button Tapped
@@ -75,6 +77,8 @@ namespace RealWorldApp.Pages
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
             LblQtyInt -= 1;           
             LblQty.Text = LblQtyInt.ToString();
+            // Update Labael Total Price
+            LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
         }
     }
 }
