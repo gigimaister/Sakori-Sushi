@@ -180,6 +180,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>Order Details</value>
+  </data>
   <data name="OrderNum" xml:space="preserve">
     <value>Order No.</value>
   </data>
@@ -213,6 +216,9 @@
   <data name="ProvideDetails" xml:space="preserve">
     <value>Provide Your Details</value>
   </data>
+  <data name="Qty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
@@ -224,6 +230,9 @@
   </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>Total Price</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Unit Price</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>

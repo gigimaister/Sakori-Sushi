@@ -6,11 +6,13 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace RealWorldApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrdersPage : ContentPage
     {
+        // ObservCol For Orders By User
         public ObservableCollection<OrderByUser> OrdersCollection;
         public OrdersPage()
         {
@@ -36,6 +38,18 @@ namespace RealWorldApp.Pages
         private void TapBack_Tapped(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        // Order Clicked => Order Details Page
+        private void LvOrders_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            // Get Current Category Selection
+            var currentSelection = e.SelectedItem;
+            // If Selection Is Null Do Nothing
+            if (currentSelection == null) return;
+            OrderByUser d = e.SelectedItem as OrderByUser;
+            Navigation.PushModalAsync(new OrdersDetailPage(d.id));
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
