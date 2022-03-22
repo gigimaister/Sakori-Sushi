@@ -51,7 +51,7 @@
                                            CharacterSpacing="1"/>
                                     
                                     <Label Text="{translator:Translate Qty}"
-                                           TextColor="{StaticResource LightRed}" 
+                                           TextColor="{StaticResource LightRed} " 
                                            FontSize="Medium"
                                            CharacterSpacing="1" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
@@ -60,7 +60,10 @@
                                            FontSize="Medium" CharacterSpacing="1" HorizontalOptions="StartAndExpand" />
                                     <Label Text="{Binding price}" TextColor="Black" 
                                            FontSize="Medium" CharacterSpacing="1"/>
-                                   
+                                    <Label Text="X"
+                                           TextColor="{StaticResource LightBrown}"
+                                           FontSize="Medium"/>
+
                                     <Label Text="{Binding qty}" TextColor="Black" 
                                            FontSize="Medium" CharacterSpacing="1" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
