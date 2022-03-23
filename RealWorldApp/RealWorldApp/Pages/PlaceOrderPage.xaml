@@ -45,18 +45,18 @@
                            TextColor="{StaticResource LightRed}" />
                         <Entry Placeholder="{translator:Translate Name}"
                            PlaceholderColor="{StaticResource LightBrown}"
-                           TextColor="{StaticResource LightBrown}"
+                           TextColor="{StaticResource Black}"
                            x:Name="EntName"
                            Keyboard="Text" />
                         <Entry Placeholder="{translator:Translate Phone}"
                            PlaceholderColor="{StaticResource LightBrown}"
-                           TextColor="#{StaticResource LightBrown}"
+                           TextColor="{StaticResource Black}"
                            x:Name="EntPhone"
                            Keyboard="Numeric" />
                         <Editor Placeholder="{translator:Translate Address}"
                             HeightRequest="100"
                             PlaceholderColor="{StaticResource LightBrown}"
-                            TextColor="{StaticResource LightBrown}"
+                            TextColor="{StaticResource Black}"
                             x:Name="EntAddress"
                             Keyboard="Default" />
                     </StackLayout>

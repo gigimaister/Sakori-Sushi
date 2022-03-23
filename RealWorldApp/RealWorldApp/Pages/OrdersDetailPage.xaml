@@ -32,12 +32,12 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="20">
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                                     <StackLayout>
                                         <Label Text="{Binding product.name}"
                                                TextColor="Gray" 
-                                               FontSize="Large" HorizontalTextAlignment="End"
-                                               HorizontalOptions="EndAndExpand"/>
+                                               FontSize="Large" 
+                                               />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Margin="20,10,20,10">
