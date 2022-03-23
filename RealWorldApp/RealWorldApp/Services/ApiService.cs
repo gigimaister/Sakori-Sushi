@@ -56,11 +56,11 @@ namespace RealWorldApp.Services
             var result = JsonConvert.DeserializeObject<Token>(jsonResult);
 
             // Store Token + Userid In Device Local Storage
-            Preferences.Set("accessToken", result.access_token);
-            Preferences.Set("userId", result.user_Id);
-            Preferences.Set("userName", result.user_name);
-            Preferences.Set("tokenExpirationTime", result.expiration_Time);
-            Preferences.Set("currentTime", UnixTime.GetCurrentTime());
+            Preferences.Set(Constants.Preference.AccessToken, result.access_token);
+            Preferences.Set(Constants.Preference.UserId, result.user_Id);
+            Preferences.Set(Constants.Preference.UserName, result.user_name);
+            Preferences.Set(Constants.Preference.TokenExpirationTime, result.expiration_Time);
+            Preferences.Set(Constants.Preference.CurrentTime, UnixTime.GetCurrentTime());
 
             return true;
 

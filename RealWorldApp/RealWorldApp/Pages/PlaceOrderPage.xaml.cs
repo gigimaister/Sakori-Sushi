@@ -30,7 +30,7 @@ namespace RealWorldApp.Pages
             order.fullName = EntName.Text;
             order.phone = EntPhone.Text;
             order.address = EntAddress.Text;
-            order.userId = Preferences.Get("userId", 0);
+            order.userId = Preferences.Get(Constants.Preference.UserId, 0);
             order.orderTotal = _tatoalPrice;
 
             var response = await ApiService.PlaceOrder(order);

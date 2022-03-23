@@ -24,7 +24,7 @@ namespace RealWorldApp.Pages
         // GET Order Items
         private async void GetOrderItems()
         {
-            var orders = await ApiService.GetOrdersByUser(Preferences.Get("userId", 0));
+            var orders = await ApiService.GetOrdersByUser(Preferences.Get(Constants.Preference.UserId, 0));
 
             foreach (var order in orders)
             {

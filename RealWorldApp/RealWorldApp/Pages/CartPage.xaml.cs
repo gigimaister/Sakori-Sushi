@@ -28,14 +28,14 @@ namespace RealWorldApp.Pages
         // GET Total Price
         private async void GetTotalPrice()
         {
-            var totalPrice = await ApiService.GetCartSubTotal(Preferences.Get("userId", 0));
+            var totalPrice = await ApiService.GetCartSubTotal(Preferences.Get(Constants.Preference.UserId, 0));
             LblTotalPrice.Text = totalPrice.subTotal.ToString();
         }
 
         // GET Shopping Cart Items
         private async void GetShoppingCartItems()
         {
-            var shoppingCartItems = await ApiService.GetShoppingCartItems(Preferences.Get("userId", 0));
+            var shoppingCartItems = await ApiService.GetShoppingCartItems(Preferences.Get(Constants.Preference.UserId, 0));
 
             foreach (var cartItem in shoppingCartItems)
             {
@@ -68,7 +68,7 @@ namespace RealWorldApp.Pages
                 return;
             }
 
-            var response = await ApiService.ClearShoppingCart(Preferences.Get("userId", 0));
+            var response = await ApiService.ClearShoppingCart(Preferences.Get(Constants.Preference.UserId, 0));
             if (response)
             {
                 await DisplayAlert("", TraslatedMessages.Alert_Cleared_Cart(), TraslatedMessages.Alert_Dismiss());

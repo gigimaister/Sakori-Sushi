@@ -27,7 +27,7 @@ namespace RealWorldApp.Pages
             CategoriesCollection = new ObservableCollection<Category>();         
             GetPopularProducts();
             GetCategories();           
-            LblUserName.Text = Preferences.Get("userName", TraslatedMessages.Alert_Default_User_Name());
+            LblUserName.Text = Preferences.Get(Constants.Preference.UserName, TraslatedMessages.Alert_Default_User_Name());
             CvProducts.IsVisible = true;
             GridMain.IsVisible = true;
             GridLottieAnimation.IsVisible = false;
@@ -156,8 +156,8 @@ namespace RealWorldApp.Pages
             // Prevent Double Click
             if (IsClickedOnce) return;
             IsClickedOnce = true;
-            Preferences.Set("accessToken", string.Empty);
-            Preferences.Set("tokenExpirationTime", 0);
+            Preferences.Set(Constants.Preference.AccessToken, string.Empty);
+            Preferences.Set(Constants.Preference.TokenExpirationTime, 0);
             Application.Current.MainPage = new NavigationPage(new SignUpPage());
 
 
@@ -168,7 +168,7 @@ namespace RealWorldApp.Pages
         {
             base.OnAppearing();
             // We Want To Override Because When We Navigate To Home Page We Want Call GET  Totatl Cart Items
-            var response = await ApiService.GetTotalCartItems(Preferences.Get("userId", 0));
+            var response = await ApiService.GetTotalCartItems(Preferences.Get(Constants.Preference.UserId, 0));
             LblTotalItems.Text = response.totalItems.ToString();
             // Init Duplicate Click Preventor
             IsClickedOnce = false;

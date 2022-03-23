@@ -28,8 +28,8 @@ namespace RealWorldApp.Pages
             var response = await ApiService.Login(EntEmail.Text, EntPassword.Text);
 
             // Store Uname & Pwd For Expired Token Later
-            Preferences.Set("email", EntEmail.Text);
-            Preferences.Set("password", EntPassword.Text);
+            Preferences.Set(Constants.Preference.Email, EntEmail.Text);
+            Preferences.Set(Constants.Preference.Password, EntPassword.Text);
 
 
             // If Login Successfull 
