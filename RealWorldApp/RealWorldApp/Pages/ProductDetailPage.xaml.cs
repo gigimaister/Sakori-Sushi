@@ -28,6 +28,7 @@ namespace RealWorldApp.Pages
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
+            
 
         }
 

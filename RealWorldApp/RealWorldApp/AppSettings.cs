@@ -1,5 +1,6 @@
 ﻿
 using Xamarin.Essentials;
+using static RealWorldApp.Constants;
 
 namespace RealWorldApp
 {
@@ -12,7 +13,7 @@ namespace RealWorldApp
     public static class TraslatedMessages
     {
         // Check What Language The Device Is On And Set Alert Strings Accordinally
-        static string userLanguage = Preferences.Get("deviceLanguage", string.Empty);
+        static string userLanguage = Preferences.Get(Preference.DeviceLanguage, string.Empty);
         public static string Alert_Hello_Kampai()
         {
             if (userLanguage == "en") return EnglishMessages.Alert_Hello_Kampai;
@@ -79,48 +80,78 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_No_Items_In_Cart;
         }
+        public static class Menu
+        {
+            public static string Salmon()
+            {
+                if (userLanguage == "en") return EnglishMessages.Fishes.Salmon;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Fishes.Salmon;
+            }
+            public static string Denis()
+            {
+                if (userLanguage == "en") return EnglishMessages.Fishes.Denis;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Fishes.Denis;
+            }
+            public static string YesllowTail()
+            {
+                if (userLanguage == "en") return EnglishMessages.Fishes.YesllowTail;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Fishes.YesllowTail;
+            }
+            public static string Cucumber()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Cucumber;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Cucumber;
+            }
+            public static string Batata()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Batata;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Batata;
+            }
+            public static string CreamCheese()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.CreamCheese;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.CreamCheese;
+            }
+            public static string Carrot()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Carrot;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Carrot;
+            }
+            public static string Avocado()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Avocado;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Avocado;
+            }
+            public static string Irit()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Irit;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Irit;
+            }
+            public static string GreenOnion()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.GreenOnion;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.GreenOnion;
+            }
+            public static string Tamago()
+            {
+                if (userLanguage == "en") return EnglishMessages.Vegetables.Tamago;
+                else if (userLanguage == "rus") return "";
+                else return HebrewMessages.Vegetables.Tamago;
+            }
+
+        }
+
     }
 
-    #region Languages
-    public static class EnglishMessages
-    {
-        public static string Alert_Hello_Kampai = "Kampai!!";
-        public static string Alert_Account_Created = "Your Account Has Been Created (:";
-        public static string Alert_Dismiss = "Ok";
-        public static string Alert_Oops = "Oops...";
-        public static string Alert_Something_Went_Wrong = "Something Went Wrong...";
-        public static string Alert_Pwd_Missmatch = "The Psswords Doesn't Match!";
-        public static string Alert_pls_Check_pwds = "Please Make Sure The Passwords Match!";
-        public static string Alert_Default_User_Name = "Guest";
-        public static string Alert_Added_Items_To_Cart = "Your Items Has Been Added To The Cart!";
-        public static string Alert_Cleared_Cart = "Your Cart Has Been Cleared";
-        public static string Alert_No_Items_In_Cart = "No Items In The Cart";
-    }
-    public static class HebrewMessages
-    {
-        public static string Alert_Hello_Kampai = "קמפאי!!";
-        public static string Alert_Account_Created = "החשבון שלך נוצר בהצלחה (:";
-        public static string Alert_Dismiss = "בסדר";
-        public static string Alert_Oops = "אופס...";
-        public static string Alert_Something_Went_Wrong = "משהו השתבש...";
-        public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
-        public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
-        public static string Alert_Default_User_Name = "אורח/ת";
-        public static string Alert_Added_Items_To_Cart = "הפריט נוסף לעגלה";
-        public static string Alert_Cleared_Cart = "כל הפריטים הוסרו מהעגלה";
-        public static string Alert_No_Items_In_Cart = "אין פריטים בעגלה";
-    }
-    public static class RussionMessages
-    {
-        public static string Alert_Hello_Kampai = "קמפאי!!";
-        public static string Alert_Account_Created = "החשבון שלך נוצר בהצלחה (:";
-        public static string Alert_Dismiss = "בסדר";
-        public static string Alert_Oops = "אופס...";
-        public static string Alert_Something_Went_Wrong = "משהו השתבש...";
-        public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
-        public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
-        public static string Alert_Default_User_Name = "אורח/ת";
-    }
-    #endregion
-
+  
 }

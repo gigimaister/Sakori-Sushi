@@ -50,6 +50,7 @@
                            TextColor="{StaticResource LightBrown}"
                            FontSize="Body" />
                 </StackLayout>
+                
                 <StackLayout Spacing="20"
                              Orientation="Horizontal"
                              VerticalOptions="EndAndExpand"
