@@ -15,9 +15,13 @@ namespace RealWorldApp.Pages
         // ObservCol For Orders By User
         public ObservableCollection<OrderDetail> OrdersDetailCollection;
         public int OrderId;
-        public OrdersDetailPage(int orderId)
+        public double OrderTotal;
+        public OrdersDetailPage(int orderId, double orderTotal)
         {
+            // Get Order Id & Order Total From Last Page
             OrderId = orderId;
+            OrderTotal = orderTotal;
+
             InitializeComponent();
             OrdersDetailCollection = new ObservableCollection<OrderDetail>();
             GetOrderItems();
@@ -46,6 +50,11 @@ namespace RealWorldApp.Pages
             Navigation.PopModalAsync();
         }
 
+        // Set Ordr Total At The Bottom Page
+        protected override void OnAppearing()
+        {
+            LblTotalAmount.Text = OrderTotal.ToString();
+        }
         
     }
 }

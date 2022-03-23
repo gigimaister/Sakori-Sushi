@@ -47,8 +47,8 @@ namespace RealWorldApp.Pages
             var currentSelection = e.SelectedItem;
             // If Selection Is Null Do Nothing
             if (currentSelection == null) return;
-            OrderByUser d = e.SelectedItem as OrderByUser;
-            Navigation.PushModalAsync(new OrdersDetailPage(d.id));
+            OrderByUser orderByUser = e.SelectedItem as OrderByUser;
+            Navigation.PushModalAsync(new OrdersDetailPage(orderByUser.id, orderByUser.orderTotal));
             ((ListView)sender).SelectedItem = null;
         }
     }
