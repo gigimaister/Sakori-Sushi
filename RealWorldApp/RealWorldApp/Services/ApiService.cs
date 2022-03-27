@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
 using UnixTimeStamp;
+using System.Collections.ObjectModel;
 
 namespace RealWorldApp.Services
 {
@@ -198,7 +199,33 @@ namespace RealWorldApp.Services
             }
         }
 
+        // Get Main Selection Dishes
+        public static async Task<List<MainDishes>> GetMainDishSelection()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get(Constants.Preference.AccessToken, string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/SideDishes");
+                var json = JsonConvert.DeserializeObject<List<MainDishes>>(response);
+                return json;
+            }
+        }
 
+        // Get Side Dishes Selection 
+        public static async Task<List<SideDish>> GetSideDishSelection(int mainDishId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get(Constants.Preference.AccessToken, string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/SideDishes/SideDishesByMainDishId/{mainDishId}");
+                var json = JsonConvert.DeserializeObject<List<SideDish>>(response);
+                return json;
+            }
+        }
 
         #endregion
 

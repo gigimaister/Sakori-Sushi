@@ -14,7 +14,15 @@ namespace RealWorldApp.Models
         public bool isPopularProduct { get; set; }
         public bool IsProductSelectable { get; set; }
         public int categoryId { get; set; }
+        public bool IsMeatSelect { get; set; }
+        public bool IsFishSelect { get; set; }
+        public bool IsVegSelect { get; set; }
+        public int MaxMeatSelect { get; set; }
+        public int MaxFishSelect { get; set; }
+        public int MaxVegSelect { get; set; }
         public object imageArray { get; set; }
+        public List<SideDish> SideDishList { get; set; }
         public string FullImageUrl => $"{AppSettings.ApiUrl}/{imageUrl}";
+
     }
 }

@@ -1,6 +1,9 @@
 ﻿using RealWorldApp.Models;
 using RealWorldApp.Services;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,27 +14,68 @@ namespace RealWorldApp.Pages
     public partial class ProductDetailPage : ContentPage
     {
         private int _productId;
-        
+        public ObservableCollection<SideDish> MeatSideDish { get; set; }
+        public ObservableCollection<SideDish> FishSideDish { get; set; }
+        public ObservableCollection<SideDish> VegSideDish { get; set; }
+
         public ProductDetailPage(int productId)
         {
             InitializeComponent();
-            GetProductDetails(productId);
+
+            // Side Dish Lists
+            MeatSideDish = new ObservableCollection<SideDish>();
+            FishSideDish = new ObservableCollection<SideDish>();
+            VegSideDish = new ObservableCollection<SideDish>();
+
+            GetProductDetails(productId);           
             _productId = productId;
-        }
+        }     
 
         // Get Product Details
         private async void GetProductDetails(int productId)
         {
             var product = await ApiService.GetProductById(productId);
+
             LblName.Text = product.name;
             LblDetail.Text = product.detail;
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
+
+            // Check If Product Selectable Then We Want To Check What Kind Of Side Dishes We Can Add
+            if (product.IsProductSelectable)
+            {
+                // Meat List
+                if (product.IsMeatSelect)
+                {
+                   var meatSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Meat);
+                   foreach(var meatDish in meatSideDishes)
+                    {
+                        MeatSideDish.Add(meatDish);
+                    }                  
+                }
+                // Fish List
+                if (product.IsFishSelect)
+                {
+                    var fishSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Fish);
+                    foreach (var fishDish in fishSideDishes)
+                    {
+                        FishSideDish.Add(fishDish);
+                    }                                       
+                }
+                // Veg List
+                if (product.IsVegSelect)
+                {
+                    var vegSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Veg);
+                    foreach (var vegDish in vegSideDishes)
+                    {
+                        VegSideDish.Add(vegDish);
+                    }
+                }
+            }          
             
-
         }
-
+     
         // X Button Click => Back To Product List Page
         private void TapBack_Tapped(object sender, System.EventArgs e)
         {
