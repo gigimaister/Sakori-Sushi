@@ -88,9 +88,11 @@ namespace RealWorldApp.Pages
             Navigation.PopModalAsync();
         }
 
+        // Cart Controls
+        #region Cart Controls
         // Add To Cart Button
         private async void BtnAddToCart_Clicked(object sender, System.EventArgs e)
-        {            
+        {
             var addToCart = new AddToCart();
             addToCart.Qty = LblQty.Text;
             addToCart.Price = LblPrice.Text;
@@ -126,31 +128,32 @@ namespace RealWorldApp.Pages
         {
             if (LblQty.Text == "1") return;
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
-            LblQtyInt -= 1;           
+            LblQtyInt -= 1;
             LblQty.Text = LblQtyInt.ToString();
             // Update Labael Total Price
             LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
         }
+        #endregion
 
         // Side Dishes Btns
         #region SideDishes Buttons
-        
+
         // Meat Btn List
         private void BtnMeatSelect_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new SideDishSelectorPage(MeatSideDish));
         }
 
         // Fish Btn List
         private void BtnFishSelect_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new SideDishSelectorPage(FishSideDish));
         }
 
         // Veg Btn List
         private void BtnVegSelect_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new SideDishSelectorPage(VegSideDish));
         }
         #endregion
 
