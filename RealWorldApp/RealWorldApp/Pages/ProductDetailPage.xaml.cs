@@ -48,6 +48,8 @@ namespace RealWorldApp.Pages
                 // Meat List
                 if (product.IsMeatSelect)
                 {
+                    // Set Meat Btn True
+                    BtnMeatSelect.IsVisible = true;
                    var meatSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Meat);
                    foreach(var meatDish in meatSideDishes)
                     {
@@ -57,6 +59,8 @@ namespace RealWorldApp.Pages
                 // Fish List
                 if (product.IsFishSelect)
                 {
+                    // Set Fish Btn True
+                    BtnFishSelect.IsVisible = true;
                     var fishSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Fish);
                     foreach (var fishDish in fishSideDishes)
                     {
@@ -66,6 +70,8 @@ namespace RealWorldApp.Pages
                 // Veg List
                 if (product.IsVegSelect)
                 {
+                    // Set Veg Btn True
+                    BtnVegSelect.IsVisible = true;
                     var vegSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Veg);
                     foreach (var vegDish in vegSideDishes)
                     {
@@ -125,5 +131,28 @@ namespace RealWorldApp.Pages
             // Update Labael Total Price
             LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
         }
+
+        // Side Dishes Btns
+        #region SideDishes Buttons
+        
+        // Meat Btn List
+        private void BtnMeatSelect_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        // Fish Btn List
+        private void BtnFishSelect_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        // Veg Btn List
+        private void BtnVegSelect_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
     }
 }

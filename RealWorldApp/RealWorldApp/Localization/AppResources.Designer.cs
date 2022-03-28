@@ -160,6 +160,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בחירת דג.
+        /// </summary>
+        internal static string FishSelect {
+            get {
+                return ResourceManager.GetString("FishSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to טלפון ליצירת קשר.
         /// </summary>
         internal static string ForFurtherSupport {
@@ -228,6 +237,15 @@ namespace RealWorldApp.Localization {
         internal static string MadeOn {
             get {
                 return ResourceManager.GetString("MadeOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בחירת בשר.
+        /// </summary>
+        internal static string MeatSelect {
+            get {
+                return ResourceManager.GetString("MeatSelect", resourceCulture);
             }
         }
         
@@ -408,6 +426,15 @@ namespace RealWorldApp.Localization {
         internal static string UnitPrice {
             get {
                 return ResourceManager.GetString("UnitPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בחירת ירק.
+        /// </summary>
+        internal static string VegSelect {
+            get {
+                return ResourceManager.GetString("VegSelect", resourceCulture);
             }
         }
         

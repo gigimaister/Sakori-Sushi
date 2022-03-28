@@ -50,7 +50,15 @@
                            TextColor="{StaticResource LightBrown}"
                            FontSize="Body" />
                 </StackLayout>
-                
+                <!--Side Select Buttons-->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button x:Name="BtnMeatSelect" Text="{translator:Translate MeatSelect}" Style="{StaticResource SideDishButton}" 
+                            BackgroundColor="#cc2b5e" TextColor="White" IsVisible="False" FontSize="Medium" Clicked="BtnMeatSelect_Clicked"/>
+                    <Button x:Name="BtnFishSelect" Text="{translator:Translate FishSelect}" Style="{StaticResource SideDishButton}" 
+                            BackgroundColor="#42275a" TextColor="White" IsVisible="False" FontSize="Medium" Clicked="BtnFishSelect_Clicked"/>
+                    <Button x:Name="BtnVegSelect" Text="{translator:Translate VegSelect}" Style="{StaticResource SideDishButton}"
+                            BackgroundColor="#bdc3c7" IsVisible="False" FontSize="Medium" Clicked="BtnVegSelect_Clicked"/>
+                </StackLayout>
                 <StackLayout Spacing="20"
                              Orientation="Horizontal"
                              VerticalOptions="EndAndExpand"

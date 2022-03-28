@@ -150,6 +150,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="FishSelect" xml:space="preserve">
+    <value>Select Fish</value>
+  </data>
   <data name="ForFurtherSupport" xml:space="preserve">
     <value>For further support you can call our helpline using the option below</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="MadeOn" xml:space="preserve">
     <value>Made On</value>
+  </data>
+  <data name="MeatSelect" xml:space="preserve">
+    <value>Select Meat</value>
   </data>
   <data name="MyOrders" xml:space="preserve">
     <value>My Orders</value>
@@ -233,6 +239,9 @@
   </data>
   <data name="UnitPrice" xml:space="preserve">
     <value>Unit Price</value>
+  </data>
+  <data name="VegSelect" xml:space="preserve">
+    <value>Select Vegetables</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>

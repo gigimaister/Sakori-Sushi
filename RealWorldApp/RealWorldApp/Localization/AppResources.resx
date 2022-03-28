@@ -150,6 +150,9 @@
   <data name="Email" xml:space="preserve">
     <value>אימייל</value>
   </data>
+  <data name="FishSelect" xml:space="preserve">
+    <value>בחירת דג</value>
+  </data>
   <data name="ForFurtherSupport" xml:space="preserve">
     <value>טלפון ליצירת קשר</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="MadeOn" xml:space="preserve">
     <value>בוצעה ב</value>
+  </data>
+  <data name="MeatSelect" xml:space="preserve">
+    <value>בחירת בשר</value>
   </data>
   <data name="MyOrders" xml:space="preserve">
     <value>ההזמנות שלי</value>
@@ -233,6 +239,9 @@
   </data>
   <data name="UnitPrice" xml:space="preserve">
     <value>מחיר ליחידה</value>
+  </data>
+  <data name="VegSelect" xml:space="preserve">
+    <value>בחירת ירק</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>ברוכים הבאים </value>

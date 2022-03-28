@@ -42,6 +42,10 @@
             <Style x:Key="Frame" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="110"/>
             </Style>
+            <!--Side Dishes Buttons-->
+            <Style x:Key="SideDishButton" TargetType="Button">
+                <Setter Property="CornerRadius" Value="120"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
