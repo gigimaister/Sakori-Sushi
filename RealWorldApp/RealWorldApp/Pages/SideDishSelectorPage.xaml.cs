@@ -14,12 +14,86 @@ namespace RealWorldApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SideDishSelectorPage : ContentPage
     {
-        private ObservableCollection<SideDish> _sideDishesList;
-        public SideDishSelectorPage(ObservableCollection<SideDish> sideDishesList)
+        public ObservableCollection<SideDish> SideDishesList;
+        private readonly bool _isCvMultiple;
+        public Product ProductObj { get; set; }
+        public SideDishSelectorPage(ObservableCollection<SideDish> sideDishesList, bool isCvMultiple = false, Product product = null)
         {
             InitializeComponent();
-            _sideDishesList = sideDishesList;
-            CvSideDishes.ItemsSource = _sideDishesList;
+            SideDishesList = sideDishesList;
+            _isCvMultiple = isCvMultiple;
+            CvSideDishes.ItemsSource = SideDishesList;
+            ProductObj = product;
+            // If More Than 1 Side Dish -> Make Cv Multiple
+            if(isCvMultiple) CvSideDishes.SelectionMode = SelectionMode.Multiple;
+        }
+
+
+        // CvItem Clicked
+        private void CvSideDishes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var currentSideDish = e.CurrentSelection.LastOrDefault() as SideDish;
+            // If Cv Single
+            if (!_isCvMultiple)
+            {
+                if(ProductObj.SideDishList is null)
+                {
+                    // Add The New One
+                    ProductObj.SideDishList.Add(currentSideDish);
+                }
+                else
+                {
+                    // If We Already Have SideDish Object In The List
+                    if (ProductObj.GetSideDishCount(currentSideDish.MainDishId) > 0)
+                    {
+                        // Remove It (Old One) From The List & Add Current One
+                        ProductObj.SideDishList.RemoveAll(x => x.MainDishId == currentSideDish.MainDishId);
+                    }
+                    // Add The New One
+                    ProductObj.SideDishList.Add(currentSideDish);
+                }                             
+                // Go Back To Detail Page
+                Navigation.PopModalAsync();             
+            }
+            else
+            // Cv Multiple
+            {
+                // If Null List
+                if(ProductObj.SideDishList is null)
+                {
+                    // If We Reached Our Max SideDishes
+                    if (e.CurrentSelection.Count == ProductObj.GetMaxSideDishByMainId(currentSideDish.MainDishId))
+                    {
+                        ProductObj.SideDishList = new List<SideDish>();
+                        foreach (var sideDish in e.CurrentSelection)
+                        {
+                            ProductObj.SideDishList.Add((SideDish)sideDish);
+                        }
+                    }
+                    else return;
+                }
+                // Not Null List
+                else
+                {
+                    // If We Reached Our Max SideDishes
+                    if (e.CurrentSelection.Count == ProductObj.SideDishList.Count)
+                    {
+                        // If We Already Have SideDish Objects In The List
+                        if (ProductObj.GetSideDishCount(currentSideDish.MainDishId) > 0)
+                        {
+                            // Remove It (Old One) From The List & Add Current One
+                            ProductObj.SideDishList.RemoveAll(x => x.MainDishId == currentSideDish.MainDishId);
+                        }
+                        foreach (var sideDish in e.CurrentSelection)
+                        {
+                            ProductObj.SideDishList.Add((SideDish)sideDish);
+                        }
+                    }
+                    else return;
+                }
+                // Go Back To Detail Page
+                Navigation.PopModalAsync();
+            }                             
         }
     }
 }

@@ -17,7 +17,8 @@ namespace RealWorldApp.Pages
         public ObservableCollection<SideDish> MeatSideDish { get; set; }
         public ObservableCollection<SideDish> FishSideDish { get; set; }
         public ObservableCollection<SideDish> VegSideDish { get; set; }
-
+        public Product ProductObj { get; set; }
+        public bool IsCvSideDishMultiple { get; set; }
         public ProductDetailPage(int productId)
         {
             InitializeComponent();
@@ -26,7 +27,8 @@ namespace RealWorldApp.Pages
             MeatSideDish = new ObservableCollection<SideDish>();
             FishSideDish = new ObservableCollection<SideDish>();
             VegSideDish = new ObservableCollection<SideDish>();
-
+            ProductObj = new Product();
+            
             GetProductDetails(productId);           
             _productId = productId;
         }     
@@ -35,6 +37,7 @@ namespace RealWorldApp.Pages
         private async void GetProductDetails(int productId)
         {
             var product = await ApiService.GetProductById(productId);
+            ProductObj = product;
 
             LblName.Text = product.name;
             LblDetail.Text = product.detail;
@@ -141,21 +144,32 @@ namespace RealWorldApp.Pages
         // Meat Btn List
         private void BtnMeatSelect_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SideDishSelectorPage(MeatSideDish));
+            // Determine CvSideDishes Single Or Multiple
+            if (ProductObj.MaxMeatSelect > 1) IsCvSideDishMultiple = true;
+            Navigation.PushModalAsync(new SideDishSelectorPage(MeatSideDish, IsCvSideDishMultiple, ProductObj));
         }
 
         // Fish Btn List
         private void BtnFishSelect_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SideDishSelectorPage(FishSideDish));
+            // Determine CvSideDishes Single Or Multiple
+            if (ProductObj.MaxFishSelect > 1) IsCvSideDishMultiple = true;
+            Navigation.PushModalAsync(new SideDishSelectorPage(FishSideDish, IsCvSideDishMultiple, ProductObj));
         }
 
         // Veg Btn List
         private void BtnVegSelect_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SideDishSelectorPage(VegSideDish));
+            // Determine CvSideDishes Single Or Multiple
+            if (ProductObj.MaxVegSelect > 1) IsCvSideDishMultiple = true;
+            Navigation.PushModalAsync(new SideDishSelectorPage(VegSideDish, IsCvSideDishMultiple, ProductObj));
         }
         #endregion
 
+        protected  override void OnAppearing()
+        {
+            // Set CvSideDish Default as false
+            IsCvSideDishMultiple = false;
+        }
     }
 }
