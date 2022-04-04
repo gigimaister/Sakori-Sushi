@@ -16,7 +16,7 @@ namespace RealWorldApp.Pages
     {
         public ObservableCollection<SideDish> SideDishesList;
         private readonly bool _isCvMultiple;
-        public Product ProductObj { get; set; }
+        public Product ProductObj { get; set; }        
         public SideDishSelectorPage(ObservableCollection<SideDish> sideDishesList, bool isCvMultiple = false, Product product = null)
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace RealWorldApp.Pages
             {
                 if(ProductObj.SideDishList is null)
                 {
+                    ProductObj.SideDishList = new List<SideDish>();
                     // Add The New One
                     ProductObj.SideDishList.Add(currentSideDish);
                 }
@@ -61,6 +62,8 @@ namespace RealWorldApp.Pages
                 // If Null List
                 if(ProductObj.SideDishList is null)
                 {
+                    // Checking If We Have NULL SideDish With MainDish Id
+                    if (currentSideDish is null) return;
                     // If We Reached Our Max SideDishes
                     if (e.CurrentSelection.Count == ProductObj.GetMaxSideDishByMainId(currentSideDish.MainDishId))
                     {
@@ -75,8 +78,10 @@ namespace RealWorldApp.Pages
                 // Not Null List
                 else
                 {
+                    // Checking If We Have NULL SideDish With MainDish Id
+                    if (currentSideDish is null) return;
                     // If We Reached Our Max SideDishes
-                    if (e.CurrentSelection.Count == ProductObj.SideDishList.Count)
+                    if (e.CurrentSelection.Count == ProductObj.GetSideDishCount(currentSideDish.MainDishId))
                     {
                         // If We Already Have SideDish Objects In The List
                         if (ProductObj.GetSideDishCount(currentSideDish.MainDishId) > 0)
@@ -94,6 +99,6 @@ namespace RealWorldApp.Pages
                 // Go Back To Detail Page
                 Navigation.PopModalAsync();
             }                             
-        }
+        }        
     }
 }

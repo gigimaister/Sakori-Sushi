@@ -24,6 +24,16 @@ namespace RealWorldApp.Models
         public object imageArray { get; set; }
         public List<SideDish> SideDishList { get; set; }
         public string FullImageUrl => $"{AppSettings.ApiUrl}/{imageUrl}";
+        public string GetFullDetail()
+        {
+            string fullDeatil = $"{detail}\n{Constants.HebrewMessages.Menu_SideDishes}";
+            if(SideDishList is null)  return detail;
+            foreach (var sideDish in SideDishList)
+            {
+                fullDeatil += $"\n{sideDish.Name}";
+            }
+            return fullDeatil;
+        } 
 
         // Get Number Of SideDishe Elements By Main Dish Id
         public int GetSideDishCount(int mainDish)
@@ -35,9 +45,7 @@ namespace RealWorldApp.Models
             return mainDishCounter;
 
         }
-
-        // Get
-
+     
         // Determine If We Can Add SideDish To SideDish List
         public bool IsAddToSideList(int mainDish)
         {

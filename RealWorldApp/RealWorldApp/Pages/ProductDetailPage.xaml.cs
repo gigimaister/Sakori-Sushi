@@ -19,6 +19,8 @@ namespace RealWorldApp.Pages
         public ObservableCollection<SideDish> VegSideDish { get; set; }
         public Product ProductObj { get; set; }
         public bool IsCvSideDishMultiple { get; set; }
+        // Bool To Prevent Duoble Click
+        public bool IsClickedOnce;
         public ProductDetailPage(int productId)
         {
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace RealWorldApp.Pages
             ProductObj = product;
 
             LblName.Text = product.name;
-            LblDetail.Text = product.detail;
+            LblDetail.Text = product.GetFullDetail();
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
@@ -88,6 +90,9 @@ namespace RealWorldApp.Pages
         // X Button Click => Back To Product List Page
         private void TapBack_Tapped(object sender, System.EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             Navigation.PopModalAsync();
         }
 
@@ -144,6 +149,9 @@ namespace RealWorldApp.Pages
         // Meat Btn List
         private void BtnMeatSelect_Clicked(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             // Determine CvSideDishes Single Or Multiple
             if (ProductObj.MaxMeatSelect > 1) IsCvSideDishMultiple = true;
             Navigation.PushModalAsync(new SideDishSelectorPage(MeatSideDish, IsCvSideDishMultiple, ProductObj));
@@ -152,6 +160,9 @@ namespace RealWorldApp.Pages
         // Fish Btn List
         private void BtnFishSelect_Clicked(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             // Determine CvSideDishes Single Or Multiple
             if (ProductObj.MaxFishSelect > 1) IsCvSideDishMultiple = true;
             Navigation.PushModalAsync(new SideDishSelectorPage(FishSideDish, IsCvSideDishMultiple, ProductObj));
@@ -160,6 +171,9 @@ namespace RealWorldApp.Pages
         // Veg Btn List
         private void BtnVegSelect_Clicked(object sender, EventArgs e)
         {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
             // Determine CvSideDishes Single Or Multiple
             if (ProductObj.MaxVegSelect > 1) IsCvSideDishMultiple = true;
             Navigation.PushModalAsync(new SideDishSelectorPage(VegSideDish, IsCvSideDishMultiple, ProductObj));
@@ -170,6 +184,9 @@ namespace RealWorldApp.Pages
         {
             // Set CvSideDish Default as false
             IsCvSideDishMultiple = false;
+            LblDetail.Text = ProductObj.GetFullDetail();
+            // Init Duplicate Click Preventor
+            IsClickedOnce = false;
         }
     }
 }

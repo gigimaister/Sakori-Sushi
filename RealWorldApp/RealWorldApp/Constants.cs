@@ -33,6 +33,7 @@ namespace RealWorldApp
             public static string Alert_Added_Items_To_Cart = "Your Items Has Been Added To The Cart!";
             public static string Alert_Cleared_Cart = "Your Cart Has Been Cleared";
             public static string Alert_No_Items_In_Cart = "No Items In The Cart";
+            public static string Menu_SideDishes = "Side Dishes:";
 
            
         }
@@ -49,7 +50,8 @@ namespace RealWorldApp
             public static string Alert_Added_Items_To_Cart = "הפריט נוסף לעגלה";
             public static string Alert_Cleared_Cart = "כל הפריטים הוסרו מהעגלה";
             public static string Alert_No_Items_In_Cart = "אין פריטים בעגלה";
-          
+            public static string Menu_SideDishes = "תוספות שנבחרו:";
+
         }
         public static class RussionMessages
         {

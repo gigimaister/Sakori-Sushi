@@ -5,7 +5,8 @@
     <ContentPage.Content>
         <CollectionView x:Name="CvSideDishes"
                 HeightRequest="130"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                        SelectionChanged="CvSideDishes_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" />
             </CollectionView.ItemsLayout>
