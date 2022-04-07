@@ -107,6 +107,7 @@ namespace RealWorldApp.Pages
             addToCart.TotalAmount = LblTotalPrice.Text;
             addToCart.ProductId = _productId;
             addToCart.CustomerId = Preferences.Get("userId", 0);
+            addToCart.SideDishes = ProductObj.SideDishList;
 
             var response = await ApiService.AddItemsInCart(addToCart);
 

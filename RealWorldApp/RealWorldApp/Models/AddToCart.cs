@@ -1,4 +1,6 @@
-﻿namespace RealWorldApp.Models
+﻿using System.Collections.Generic;
+
+namespace RealWorldApp.Models
 {
     public class AddToCart
     {
@@ -7,5 +9,6 @@
         public string TotalAmount { get; set; }
         public int ProductId { get; set; }
         public int CustomerId { get; set; }
+        public List<SideDish> SideDishes { get; set; }
     }
 }
