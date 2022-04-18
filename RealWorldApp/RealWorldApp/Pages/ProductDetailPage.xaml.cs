@@ -109,6 +109,15 @@ namespace RealWorldApp.Pages
             addToCart.CustomerId = Preferences.Get("userId", 0);
             addToCart.SideDishes = ProductObj.SideDishList;
 
+            var validatorList = ProductObj.ProductDetailValidator();
+            if (validatorList.Count > 0)
+            {
+                foreach(var validatorMessage in validatorList)
+                {
+                    await DisplayAlert("", validatorMessage, TraslatedMessages.Alert_Dismiss());
+                }
+                return;
+            }
             var response = await ApiService.AddItemsInCart(addToCart);
 
             // If Added Successfuly

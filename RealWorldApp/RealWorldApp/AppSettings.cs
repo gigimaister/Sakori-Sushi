@@ -80,6 +80,19 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_No_Items_In_Cart;
         }
+
+        public static string Alert_Product_Detail_Validator(int maxSideDishCount)
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Product_Detail_Validator(maxSideDishCount);
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Product_Detail_Validator(maxSideDishCount);
+        }
+        public static string Alert_No_SideDish_Selected()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_No_SideDish_Selected;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_No_SideDish_Selected;
+        }
         
 
     }

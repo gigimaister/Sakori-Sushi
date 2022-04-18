@@ -72,5 +72,32 @@ namespace RealWorldApp.Models
             }
             return maxValue;
         }
+
+        // Product Detail Page Add To Cart Validator
+        public List<string> ProductDetailValidator()
+        {
+            var validatorMessages = new List<string>();
+            if (IsProductSelectable)
+            {
+                if (SideDishList is null) { validatorMessages.Add(TraslatedMessages.Alert_No_SideDish_Selected()); return validatorMessages; }
+                
+                if (IsMeatSelect)
+                {
+                    var maxMeat = SideDishList.Where(x => x.MainDishId == (int)MainDish.Meat).Count();
+                    if (MaxMeatSelect != maxMeat) { validatorMessages.Add(TraslatedMessages.Alert_Product_Detail_Validator(MaxMeatSelect)); }
+                }
+                if (IsFishSelect)
+                {
+                    var maxFish = SideDishList.Where(x => x.MainDishId == (int)MainDish.Fish).Count();
+                    if(MaxFishSelect != maxFish) { validatorMessages.Add(TraslatedMessages.Alert_Product_Detail_Validator(MaxFishSelect)); }
+                }
+                if (IsVegSelect)
+                {
+                    var maxVeg = SideDishList.Where(x => x.MainDishId == (int)MainDish.Veg).Count();
+                    if (MaxVegSelect != maxVeg) { validatorMessages.Add(TraslatedMessages.Alert_Product_Detail_Validator(MaxVegSelect)); }
+                }
+            }
+            return validatorMessages;
+        }
     }
 }
