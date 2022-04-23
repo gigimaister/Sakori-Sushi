@@ -122,7 +122,7 @@ namespace RealWorldApp.Services
             {
                 // Check Token Expiration
                 await TokenValidator.CheckTokenValidity();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get(Constants.Preference.AccessToken, string.Empty));
                 var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/Products/PopularProducts");
                 var json = JsonConvert.DeserializeObject<List<PopularProduct>>(response);
                 return json;

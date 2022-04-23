@@ -72,6 +72,10 @@
                                            Text="{Binding price}"/>
 
                                 </StackLayout>
+                                <Label CharacterSpacing="1"
+                                           TextColor="{StaticResource LightBrown}"
+                                           FontSize="Medium" 
+                                           Text="{Binding SideDishesDescription}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
