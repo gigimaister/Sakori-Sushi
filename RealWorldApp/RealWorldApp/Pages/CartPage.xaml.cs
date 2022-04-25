@@ -61,6 +61,10 @@ namespace RealWorldApp.Pages
         // Clear Cart
         private async void TapClearCart_Tapped(object sender, EventArgs e)
         {
+            // Alert User If Delete
+            bool answer = await DisplayAlert("", TraslatedMessages.Alert_Delete_All_Products(), TraslatedMessages.Alert_Yes(), TraslatedMessages.Alert_No());
+            if (!answer) return;
+
             // If We Don't Have Any Items In Cart Show Alert
             if (LvShoppingCart.ItemsSource == null || ShoppingCartItemCollection.Count == 0)
             {

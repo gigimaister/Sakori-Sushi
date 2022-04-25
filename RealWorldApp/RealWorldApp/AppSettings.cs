@@ -93,7 +93,24 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_No_SideDish_Selected;
         }
-        
+        public static string Alert_Delete_All_Products()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Delete_All_Products;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Delete_All_Products;
+        }
+        public static string Alert_Yes()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Yes;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Yes;
+        }
+        public static string Alert_No()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_No;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_No;
+        }
 
     }
 

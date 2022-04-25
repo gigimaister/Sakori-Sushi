@@ -35,6 +35,9 @@ namespace RealWorldApp
             public static string Alert_No_Items_In_Cart = "No Items In The Cart";
             public static string Menu_SideDishes = "Side Dishes:";
             public static string Alert_No_SideDish_Selected = "Sorry But You Didn't Choose Any Side Dish..";
+            public static string Alert_Delete_All_Products = "Delete All Products?";
+            public static string Alert_Yes = "Yes";
+            public static string Alert_No = "No";
             public static string Alert_Product_Detail_Validator(int maxsideDish) 
             {
                 return $"You Must Select At least {maxsideDish} Side Dishes!";
@@ -55,6 +58,9 @@ namespace RealWorldApp
             public static string Alert_No_Items_In_Cart = "אין פריטים בעגלה";
             public static string Menu_SideDishes = "תוספות שנבחרו:";
             public static string Alert_No_SideDish_Selected = "לא בקטע רע...כן? אבל לא נבחרו תוספות ):";
+            public static string Alert_Delete_All_Products = "למחוק את כל המוצרים?";
+            public static string Alert_Yes = "כן";
+            public static string Alert_No = "לא";
             public static string Alert_Product_Detail_Validator(int maxsideDish)
             {
                 return $"חובה לבחור לפחות {maxsideDish} תוספות!";
@@ -71,7 +77,10 @@ namespace RealWorldApp
             public static string Alert_Pwd_Missmatch = "סיסמאות לא תואמות!";
             public static string Alert_pls_Check_pwds = "נא לבדוק שהסיסמאות תואמות!";
             public static string Alert_Default_User_Name = "אורח/ת";
-          
+            public static string Alert_Delete_All_Products = "למחוק את כל המוצרים?";
+            public static string Alert_Yes = "כן";
+            public static string Alert_No = "לא";
+
         }
         #endregion
 
