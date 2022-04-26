@@ -42,9 +42,10 @@
                 </Label>
             </Grid>
             <ListView x:Name="LvShoppingCart"
-                      SelectionMode="None"
+                      SelectionMode="Single"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
+                      ItemSelected="LvShoppingCart_ItemSelected"
                       SeparatorColor="{StaticResource LightBrown}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

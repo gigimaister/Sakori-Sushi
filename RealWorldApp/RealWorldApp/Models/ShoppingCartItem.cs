@@ -10,6 +10,7 @@ namespace RealWorldApp.Models
         public int qty { get; set; }
         public string productName { get; set; }
         public List<SideDishToCart> SideDishToCarts { get; set; }
+        public Product Product { get; set; }
 
         public string SideDishesDescription => GetSideDishesDescription();
 

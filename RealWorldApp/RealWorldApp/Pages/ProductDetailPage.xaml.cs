@@ -18,10 +18,11 @@ namespace RealWorldApp.Pages
         public ObservableCollection<SideDish> FishSideDish { get; set; }
         public ObservableCollection<SideDish> VegSideDish { get; set; }
         public Product ProductObj { get; set; }
+        public ShoppingCartItem ShoppingCartItem { get; set; }
         public bool IsCvSideDishMultiple { get; set; }
         // Bool To Prevent Duoble Click
         public bool IsClickedOnce;
-        public ProductDetailPage(int productId)
+        public ProductDetailPage(int productId, ShoppingCartItem _shoppingCartItem = null)
         {
             InitializeComponent();
 
@@ -31,8 +32,18 @@ namespace RealWorldApp.Pages
             VegSideDish = new ObservableCollection<SideDish>();
             ProductObj = new Product();
             
-            GetProductDetails(productId);           
+            // Check If We Edit The Product Instead Of Post New One
+            if(_shoppingCartItem != null)
+            {
+                ShoppingCartItem = _shoppingCartItem;
+                SetProductForEdit(ShoppingCartItem);
+            }
+            else
+            {
+                GetProductDetails(productId);
+            }
             _productId = productId;
+            
         }     
 
         // Get Product Details
@@ -46,7 +57,28 @@ namespace RealWorldApp.Pages
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
+            // Get All SideDishes
+            await GetAllSideDish(product);                               
+        }
 
+        // Set Product For Edit
+        private async  void SetProductForEdit(ShoppingCartItem sCartItem)
+        {
+            ProductObj = sCartItem.Product;
+
+            LblName.Text = ProductObj.name;
+            LblDetail.Text = ProductObj.GetFullDetail();
+            ImgProduct.Source = ProductObj.FullImageUrl;
+            LblPrice.Text = ProductObj.price.ToString();
+            LblTotalPrice.Text = sCartItem.totalAmount.ToString();
+            LblQty.Text = ShoppingCartItem.qty.ToString();
+            // Get All SideDishes
+            await GetAllSideDish(ProductObj);
+        }
+
+        // Get All SideDish
+        private async Task GetAllSideDish(Product product)
+        {
             // Check If Product Selectable Then We Want To Check What Kind Of Side Dishes We Can Add
             if (product.IsProductSelectable)
             {
@@ -55,11 +87,11 @@ namespace RealWorldApp.Pages
                 {
                     // Set Meat Btn True
                     BtnMeatSelect.IsVisible = true;
-                   var meatSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Meat);
-                   foreach(var meatDish in meatSideDishes)
+                    var meatSideDishes = await ApiService.GetSideDishSelection((int)MainDish.Meat);
+                    foreach (var meatDish in meatSideDishes)
                     {
                         MeatSideDish.Add(meatDish);
-                    }                  
+                    }
                 }
                 // Fish List
                 if (product.IsFishSelect)
@@ -70,7 +102,7 @@ namespace RealWorldApp.Pages
                     foreach (var fishDish in fishSideDishes)
                     {
                         FishSideDish.Add(fishDish);
-                    }                                       
+                    }
                 }
                 // Veg List
                 if (product.IsVegSelect)
@@ -83,12 +115,11 @@ namespace RealWorldApp.Pages
                         VegSideDish.Add(vegDish);
                     }
                 }
-            }          
-            
+            }
         }
-     
+
         // X Button Click => Back To Product List Page
-        private void TapBack_Tapped(object sender, System.EventArgs e)
+        private void TapBack_Tapped(object sender, EventArgs e)
         {
             // Prevent Double Click
             if (IsClickedOnce) return;
@@ -98,10 +129,11 @@ namespace RealWorldApp.Pages
 
         // Cart Controls
         #region Cart Controls
+
         // Add To Cart Button
         private async void BtnAddToCart_Clicked(object sender, System.EventArgs e)
         {
-            var addToCart = new AddToCart();
+            var addToCart = new AddToCart();                    
             addToCart.Qty = LblQty.Text;
             addToCart.Price = LblPrice.Text;
             addToCart.TotalAmount = LblTotalPrice.Text;
@@ -118,7 +150,19 @@ namespace RealWorldApp.Pages
                 }
                 return;
             }
-            var response = await ApiService.AddItemsInCart(addToCart);
+
+            bool response;
+
+            // If We In Edit Mode
+            if(ShoppingCartItem != null)
+            {
+                response = await ApiService.EditItemInCart(Preferences.Get(Constants.Preference.UserId, 0), addToCart);
+            }
+            else
+            {
+                response = await ApiService.AddItemsInCart(addToCart);
+            }
+             
 
             // If Added Successfuly
             if (response)

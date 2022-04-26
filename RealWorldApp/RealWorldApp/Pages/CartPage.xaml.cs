@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
 namespace RealWorldApp.Pages
 {
@@ -21,8 +22,8 @@ namespace RealWorldApp.Pages
         {
             InitializeComponent();
             ShoppingCartItemCollection = new ObservableCollection<ShoppingCartItem>();
-            GetShoppingCartItems();
-            GetTotalPrice();        
+            //GetShoppingCartItems();
+            //GetTotalPrice();        
         }
 
         // GET Total Price
@@ -35,7 +36,8 @@ namespace RealWorldApp.Pages
         // GET Shopping Cart Items
         private async void GetShoppingCartItems()
         {
-            var shoppingCartItems = await ApiService.GetShoppingCartItems(Preferences.Get(Constants.Preference.UserId, 0));
+            List<ShoppingCartItem> shoppingCartItems = new List<ShoppingCartItem>();
+            shoppingCartItems = await ApiService.GetShoppingCartItems(Preferences.Get(Constants.Preference.UserId, 0));
 
             foreach (var cartItem in shoppingCartItems)
             {
@@ -100,7 +102,35 @@ namespace RealWorldApp.Pages
             base.OnAppearing();          
             // Init Duplicate Click Preventor
             IsClickedOnce = false;
-          
+            ShoppingCartItemCollection.Clear();
+            GetShoppingCartItems();
+            GetTotalPrice();
+
+        }
+
+        private void LvShoppingCart_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            // If Selection Is Null Do Nothing
+            if (e.SelectedItem == null) return;
+            // Get Current Category Selection
+            var currentSelection = e.SelectedItem as ShoppingCartItem;
+            
+            // Add Selected SideDishes (If Any) To Product To Be Pushed To Edit Page
+            if (currentSelection.SideDishToCarts.Count > 0)
+            {
+                currentSelection.Product.SideDishList = new List<SideDish>();
+                foreach (var sDish in currentSelection.SideDishToCarts)
+                {
+                    currentSelection.Product.SideDishList.Add(sDish.SideDish);
+                }
+            }
+           
+           
+            // Go To Product Detail Page
+            Navigation.PushModalAsync(new ProductDetailPage(currentSelection.Product.id, currentSelection));
+            // When Navigting Back To Product List Page We Want Unchecked Categories
+            ((ListView)sender).SelectedItem = null;
+            
         }
     }
 }

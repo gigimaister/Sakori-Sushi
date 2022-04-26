@@ -275,7 +275,7 @@ namespace RealWorldApp.Services
 
         #region DELETE
 
-        // Delete Shopping Cart
+        // Delete All Shopping Cart Items
         public static async Task<bool> ClearShoppingCart(int userId)
         {
             using (var httpClient = new HttpClient())
@@ -287,6 +287,39 @@ namespace RealWorldApp.Services
                 if (!response.IsSuccessStatusCode) return false;
                 return true;
             }
+        }
+
+        // Delete Shopping Cart Item
+        public static async Task<bool> ClearShoppingCartItem(int userId, int productId)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var response = await httpClient.DeleteAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/DeleteProductFromCart/{userId}/{productId}");
+                if (!response.IsSuccessStatusCode) return false;
+                return true;
+            }
+        }
+        #endregion
+
+        #region PUT
+        // Add Item To Cart
+        public static async Task<bool> EditItemInCart(int userId, AddToCart addToCart)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+                var json = JsonConvert.SerializeObject(addToCart);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PutAsync($"{AppSettings.ApiUrl}/api/ShoppingCartItems/{userId}", content);
+                if (!response.IsSuccessStatusCode) return false;
+            }
+
+            return true;
         }
         #endregion
     }
