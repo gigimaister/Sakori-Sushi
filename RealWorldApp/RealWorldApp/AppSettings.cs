@@ -111,7 +111,18 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_No;
         }
-
+        public static string Alert_Delete_Product()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Delete_Product;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Delete_Product;
+        }
+        public static string Alert_Product_Was_Clear()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_Product_Was_Clear;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_Product_Was_Clear;
+        }
     }
 
   

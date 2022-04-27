@@ -227,6 +227,20 @@ namespace RealWorldApp.Services
             }
         }
 
+        // Get Paid Side Dishes  
+        public static async Task<List<PaidSideDish>> GetPaidSideDishes()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                // Check Token Expiration
+                await TokenValidator.CheckTokenValidity();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get(Constants.Preference.AccessToken, string.Empty));
+                var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}/api/SideDishes/GetPaidSideDishes");
+                var json = JsonConvert.DeserializeObject<List<PaidSideDish>>(response);
+                return json;
+            }
+        }
+
         #endregion
 
         #region POST

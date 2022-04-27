@@ -198,6 +198,9 @@
   <data name="OurMenu" xml:space="preserve">
     <value>Our Menu</value>
   </data>
+  <data name="PaidSideDishes" xml:space="preserve">
+    <value>Paid Side Dishes</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>

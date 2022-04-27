@@ -17,6 +17,7 @@ namespace RealWorldApp.Pages
         public ObservableCollection<SideDish> MeatSideDish { get; set; }
         public ObservableCollection<SideDish> FishSideDish { get; set; }
         public ObservableCollection<SideDish> VegSideDish { get; set; }
+        public ObservableCollection<PaidSideDish> PaidSideDish { get; set; }
         public Product ProductObj { get; set; }
         public ShoppingCartItem ShoppingCartItem { get; set; }
         public bool IsCvSideDishMultiple { get; set; }
@@ -26,10 +27,11 @@ namespace RealWorldApp.Pages
         {
             InitializeComponent();
 
-            // Side Dish Lists
+            // Side Dish (Also Paid) Lists
             MeatSideDish = new ObservableCollection<SideDish>();
             FishSideDish = new ObservableCollection<SideDish>();
             VegSideDish = new ObservableCollection<SideDish>();
+            PaidSideDish = new ObservableCollection<PaidSideDish>();
             ProductObj = new Product();
             
             // Check If We Edit The Product Instead Of Post New One
@@ -42,9 +44,17 @@ namespace RealWorldApp.Pages
             {
                 GetProductDetails(productId);
             }
-            _productId = productId;
-            
-        }     
+            _productId = productId;                   
+        }
+
+        private async void GetPaidDishes()
+        {           
+            var paidSideDishes = await ApiService.GetPaidSideDishes();
+            foreach (var pDish in paidSideDishes)
+            {
+                PaidSideDish.Add(pDish);
+            }
+        }
 
         // Get Product Details
         private async void GetProductDetails(int productId)
@@ -58,7 +68,10 @@ namespace RealWorldApp.Pages
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
             // Get All SideDishes
-            await GetAllSideDish(product);                               
+            await GetAllSideDish(product);
+            // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
+            if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;} 
+                    
         }
 
         // Set Product For Edit
@@ -74,6 +87,8 @@ namespace RealWorldApp.Pages
             LblQty.Text = ShoppingCartItem.qty.ToString();
             // Get All SideDishes
             await GetAllSideDish(ProductObj);
+            // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
+            if (ProductObj.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true; }
         }
 
         // Get All SideDish
@@ -186,9 +201,33 @@ namespace RealWorldApp.Pages
         }
 
         // Minus Button Tapped
-        private void TapDecrement_Tapped(object sender, EventArgs e)
+        private async void TapDecrement_Tapped(object sender, EventArgs e)
         {
-            if (LblQty.Text == "1") return;
+            if (LblQty.Text == "1") 
+            { 
+                // If We In Edit Mode
+                if(ShoppingCartItem != null)
+                {
+                    // Alert User If Delete
+                    bool answer = await DisplayAlert("", TraslatedMessages.Alert_Delete_Product(), TraslatedMessages.Alert_Yes(), TraslatedMessages.Alert_No());
+                    if (answer)
+                    {
+                        var response = await ApiService.ClearShoppingCartItem(Preferences.Get(Constants.Preference.UserId, 0), ShoppingCartItem.id);
+
+                        if (response)
+                        {
+                            await DisplayAlert("", TraslatedMessages.Alert_Product_Was_Clear(), TraslatedMessages.Alert_Dismiss());
+                            await Navigation.PopModalAsync();
+
+                        }
+                        else
+                        {
+                            await DisplayAlert(TraslatedMessages.Alert_Oops(), TraslatedMessages.Alert_Something_Went_Wrong(), TraslatedMessages.Alert_Dismiss());
+                        }
+                    }
+                }
+                return;
+            }
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
             LblQtyInt -= 1;
             LblQty.Text = LblQtyInt.ToString();

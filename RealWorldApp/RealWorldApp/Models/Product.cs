@@ -14,6 +14,7 @@ namespace RealWorldApp.Models
         public double price { get; set; }
         public bool isPopularProduct { get; set; }
         public bool IsProductSelectable { get; set; }
+        public bool HasPaidSideDish { get; set; }
         public int categoryId { get; set; }
         public bool IsMeatSelect { get; set; }
         public bool IsFishSelect { get; set; }

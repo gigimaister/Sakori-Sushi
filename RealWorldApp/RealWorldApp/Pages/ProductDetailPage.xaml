@@ -59,6 +59,9 @@
                     <Button x:Name="BtnVegSelect" Text="{translator:Translate VegSelect}" Style="{StaticResource SideDishButton}"
                             BackgroundColor="#bdc3c7" IsVisible="False" FontSize="Medium" Clicked="BtnVegSelect_Clicked"/>
                 </StackLayout>
+                <Button x:Name="BtnPaidSDSelect" Style="{StaticResource SideDishButton}" Text="{translator:Translate PaidSideDishes}"
+                        BackgroundColor="#6a8a82" Margin="100,0,100,0"  TextColor="White" FontSize="Medium" IsVisible="False"/>
+
                 <StackLayout Spacing="20"
                              Orientation="Horizontal"
                              VerticalOptions="EndAndExpand"

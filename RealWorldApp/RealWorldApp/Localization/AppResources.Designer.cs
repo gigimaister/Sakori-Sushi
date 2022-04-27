@@ -304,6 +304,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to תוספות בתשלום.
+        /// </summary>
+        internal static string PaidSideDishes {
+            get {
+                return ResourceManager.GetString("PaidSideDishes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to סיסמא.
         /// </summary>
         internal static string Password {

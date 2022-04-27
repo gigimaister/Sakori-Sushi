@@ -198,6 +198,9 @@
   <data name="OurMenu" xml:space="preserve">
     <value>התפריט שלנו</value>
   </data>
+  <data name="PaidSideDishes" xml:space="preserve">
+    <value>תוספות בתשלום</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>סיסמא</value>
   </data>
