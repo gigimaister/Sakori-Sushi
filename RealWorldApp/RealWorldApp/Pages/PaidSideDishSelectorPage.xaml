@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealWorldApp.Pages.PaidSideDishSelectorPage"
+             xmlns:translator="clr-namespace:RealWorldApp.Extensions">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <CollectionView x:Name="CvPaidSideDishes"
+                HeightRequest="130"
+                SelectionMode="Multiple"
+                        SelectionChanged="CvSideDishes_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical">
+                            <Frame Padding="0"
+                             BackgroundColor="Transparent"
+                             Margin="15,10,15,0"
+                             HasShadow="True">
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <Label TextColor="{StaticResource LightRed}"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="EndAndExpand"                                          
+                                       FontSize="Medium" 
+                                       Text="{Binding Price, StringFormat='₪ {0}'}"/>
+                                    <Label TextColor="{StaticResource LightRed}"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="EndAndExpand"                                          
+                                       FontSize="Medium" 
+                                       Text="{Binding Name}"/>
+                                    <Frame Padding="0"
+                                     CornerRadius="100"
+                                     IsClippedToBounds="True"
+                                     HeightRequest="90"
+                                     WidthRequest="90"
+                                     HorizontalOptions="EndAndExpand">
+                                        <Image Aspect="AspectFill"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand" 
+                                                Source="{Binding FullImageUrl}"/>
+                                    </Frame>
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout Grid.Row="1" Margin="0,5">
+                <Button x:Name="BtnFinishSelecting" Style="{StaticResource SideDishButton}" Margin="50,0,50,0" Text="{translator:Translate FinishSelecting}"
+                        BackgroundColor="LightGreen" Clicked="BtnFinishSelecting_Clicked" FontSize="Large" FontAttributes="Bold"/>
+                <Button x:Name="BtnGoBack" Style="{StaticResource SideDishButton}" Margin="50,0,50,0" Text="{translator:Translate MaybeLater}"
+                        BackgroundColor="LightSalmon" Clicked="BtnGoBack_Clicked" FontSize="Large" FontAttributes="Bold"/>
+            </StackLayout>
+            
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -35,6 +35,7 @@ namespace RealWorldApp
             public static string Alert_Product_Was_Clear = "The product has been removed";
             public static string Alert_No_Items_In_Cart = "No Items In The Cart";
             public static string Menu_SideDishes = "Side Dishes:";
+            public static string Menu_PaidSideDishes = "Extra Side Dishes:";
             public static string Alert_No_SideDish_Selected = "Sorry But You Didn't Choose Any Side Dish..";
             public static string Alert_Delete_All_Products = "Delete All Products?";
             public static string Alert_Delete_Product = "Delete Product?";
@@ -60,6 +61,7 @@ namespace RealWorldApp
             public static string Alert_Product_Was_Clear = "הפריט הוסר מהעגלה";
             public static string Alert_No_Items_In_Cart = "אין פריטים בעגלה";
             public static string Menu_SideDishes = "תוספות שנבחרו:";
+            public static string Menu_PaidSideDishes = "תוספות בתשלום:";
             public static string Alert_No_SideDish_Selected = "לא בקטע רע...כן? אבל לא נבחרו תוספות ):";
             public static string Alert_Delete_All_Products = "למחוק את כל המוצרים?";
             public static string Alert_Delete_Product = "למחוק את המוצר?";

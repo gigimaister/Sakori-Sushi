@@ -24,6 +24,7 @@ namespace RealWorldApp.Models
         public int MaxVegSelect { get; set; }
         public object imageArray { get; set; }
         public List<SideDish> SideDishList { get; set; }
+        public List<PaidSideDish> PaidSideDishes { get; set; }
         public string FullImageUrl => $"{AppSettings.ApiUrl}/{imageUrl}";
         public string GetFullDetail()
         {
@@ -34,7 +35,19 @@ namespace RealWorldApp.Models
                 fullDeatil += $"\n{sideDish.Name}";
             }
             return fullDeatil;
-        } 
+        }
+        public string GetPaidSDFullDetail(string sideDishes)
+        {
+            string fullDeatil = sideDishes;
+            if (PaidSideDishes is null) return fullDeatil;
+            if (PaidSideDishes.Count == 0) return fullDeatil;
+            fullDeatil += $"\n{Constants.HebrewMessages.Menu_PaidSideDishes}";
+            foreach (var paidSideDish in PaidSideDishes)
+            {
+                fullDeatil += $"\n{paidSideDish.Name}  {paidSideDish.Price} ₪";
+            }
+            return fullDeatil;
+        }
 
         // Get Number Of SideDishe Elements By Main Dish Id
         public int GetSideDishCount(int mainDish)

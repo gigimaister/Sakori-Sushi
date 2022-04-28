@@ -160,6 +160,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to סיימתי לבחור (:.
+        /// </summary>
+        internal static string FinishSelecting {
+            get {
+                return ResourceManager.GetString("FinishSelecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to בחירת דג.
         /// </summary>
         internal static string FishSelect {
@@ -237,6 +246,15 @@ namespace RealWorldApp.Localization {
         internal static string MadeOn {
             get {
                 return ResourceManager.GetString("MadeOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to אולי אח&quot;כ.
+        /// </summary>
+        internal static string MaybeLater {
+            get {
+                return ResourceManager.GetString("MaybeLater", resourceCulture);
             }
         }
         

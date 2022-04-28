@@ -150,6 +150,9 @@
   <data name="Email" xml:space="preserve">
     <value>אימייל</value>
   </data>
+  <data name="FinishSelecting" xml:space="preserve">
+    <value>סיימתי לבחור (:</value>
+  </data>
   <data name="FishSelect" xml:space="preserve">
     <value>בחירת דג</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="MadeOn" xml:space="preserve">
     <value>בוצעה ב</value>
+  </data>
+  <data name="MaybeLater" xml:space="preserve">
+    <value>אולי אח"כ</value>
   </data>
   <data name="MeatSelect" xml:space="preserve">
     <value>בחירת בשר</value>

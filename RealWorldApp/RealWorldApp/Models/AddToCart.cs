@@ -10,5 +10,6 @@ namespace RealWorldApp.Models
         public int ProductId { get; set; }
         public int CustomerId { get; set; }
         public List<SideDish> SideDishes { get; set; }
+        public List<PaidSideDish> PaidSideDishes { get; set; }
     }
 }

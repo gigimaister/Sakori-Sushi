@@ -63,7 +63,7 @@ namespace RealWorldApp.Pages
             ProductObj = product;
 
             LblName.Text = product.name;
-            LblDetail.Text = product.GetFullDetail();
+            LblDetail.Text = product.GetPaidSDFullDetail(product.GetFullDetail());
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
@@ -80,7 +80,7 @@ namespace RealWorldApp.Pages
             ProductObj = sCartItem.Product;
 
             LblName.Text = ProductObj.name;
-            LblDetail.Text = ProductObj.GetFullDetail();
+            LblDetail.Text = ProductObj.GetPaidSDFullDetail(ProductObj.GetFullDetail());
             ImgProduct.Source = ProductObj.FullImageUrl;
             LblPrice.Text = ProductObj.price.ToString();
             LblTotalPrice.Text = sCartItem.totalAmount.ToString();
@@ -155,8 +155,10 @@ namespace RealWorldApp.Pages
             addToCart.ProductId = _productId;
             addToCart.CustomerId = Preferences.Get("userId", 0);
             addToCart.SideDishes = ProductObj.SideDishList;
+            addToCart.PaidSideDishes = ProductObj.PaidSideDishes;
 
             var validatorList = ProductObj.ProductDetailValidator();
+            // If We Have Validator Errors Promt User
             if (validatorList.Count > 0)
             {
                 foreach(var validatorMessage in validatorList)
@@ -271,15 +273,28 @@ namespace RealWorldApp.Pages
             if (ProductObj.MaxVegSelect > 1) IsCvSideDishMultiple = true;
             Navigation.PushModalAsync(new SideDishSelectorPage(VegSideDish, IsCvSideDishMultiple, ProductObj));
         }
+
+        // Paid SD Btn List 
+        private void BtnPaidSDSelect_Clicked(object sender, EventArgs e)
+        {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;
+            // Set CvSideDishes To Multiple
+            IsCvSideDishMultiple = true;
+            Navigation.PushModalAsync(new PaidSideDishSelectorPage(PaidSideDish, ProductObj));
+        }
         #endregion
 
         protected  override void OnAppearing()
         {
             // Set CvSideDish Default as false
             IsCvSideDishMultiple = false;
-            LblDetail.Text = ProductObj.GetFullDetail();
+            LblDetail.Text = ProductObj.GetPaidSDFullDetail(ProductObj.GetFullDetail());
             // Init Duplicate Click Preventor
             IsClickedOnce = false;
         }
+
+      
     }
 }

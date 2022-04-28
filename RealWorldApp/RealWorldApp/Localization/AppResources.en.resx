@@ -150,6 +150,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="FinishSelecting" xml:space="preserve">
+    <value>Finish Selecting</value>
+  </data>
   <data name="FishSelect" xml:space="preserve">
     <value>Select Fish</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="MadeOn" xml:space="preserve">
     <value>Made On</value>
+  </data>
+  <data name="MaybeLater" xml:space="preserve">
+    <value>Maybe Later</value>
   </data>
   <data name="MeatSelect" xml:space="preserve">
     <value>Select Meat</value>

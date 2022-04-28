@@ -7,108 +7,121 @@
              mc:Ignorable="d"
              x:Class="RealWorldApp.Pages.ProductDetailPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Grid>
-                    <Image x:Name="ImgProduct"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout>
+                    <Grid>
+                        <Image x:Name="ImgProduct"
                            Aspect="Fill"
                            HeightRequest="300" />
-                    <Image Source="close"
+                        <Image Source="close"
                            HeightRequest="40"
                            WidthRequest="40"
                            Margin="10,20,20,20"
                            VerticalOptions="Start"
                            HorizontalOptions="Start">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                </Grid>
-                <StackLayout Margin="20">
-                    <StackLayout Orientation="Horizontal">
-                       
-                        <StackLayout HorizontalOptions="EndAndExpand"
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <StackLayout Margin="20">
+                        <StackLayout Orientation="Horizontal">
+
+                            <StackLayout HorizontalOptions="EndAndExpand"
                                      Orientation="Horizontal">
-                            <Label Text="₪"
+                                <Label Text="₪"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Large" />
-                            <Label x:Name="LblPrice"
+                                <Label x:Name="LblPrice"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Large"
                                    Margin="0,0,15,0"/>
-                        </StackLayout>
-                        <Label x:Name="LblName"
+                            </StackLayout>
+                            <Label x:Name="LblName"
                                TextColor="{StaticResource LightBrown}"
                                HorizontalOptions="Start"
                                FontSize="Large" />
-                    </StackLayout>
-                    <Label Text="{translator:Translate ProductDetail}"
+                        </StackLayout>
+                        <Label Text="{translator:Translate ProductDetail}"
                            TextColor="{StaticResource LightRed}"
                            FontSize="Large"
                            Margin="0,10,0,0" />
-                    <Label x:Name="LblDetail"
+                        <Label x:Name="LblDetail"
                            TextColor="{StaticResource LightBrown}"
                            FontSize="Body" />
-                </StackLayout>
-                <!--Side Select Buttons-->
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="BtnMeatSelect" Text="{translator:Translate MeatSelect}" Style="{StaticResource SideDishButton}" 
+                        <!--Side Select Buttons-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="BtnMeatSelect" Text="{translator:Translate MeatSelect}" Style="{StaticResource SideDishButton}" 
                             BackgroundColor="#cc2b5e" TextColor="White" IsVisible="False" FontSize="Medium" Clicked="BtnMeatSelect_Clicked"/>
-                    <Button x:Name="BtnFishSelect" Text="{translator:Translate FishSelect}" Style="{StaticResource SideDishButton}" 
+                            <Button x:Name="BtnFishSelect" Text="{translator:Translate FishSelect}" Style="{StaticResource SideDishButton}" 
                             BackgroundColor="#42275a" TextColor="White" IsVisible="False" FontSize="Medium" Clicked="BtnFishSelect_Clicked"/>
-                    <Button x:Name="BtnVegSelect" Text="{translator:Translate VegSelect}" Style="{StaticResource SideDishButton}"
+                            <Button x:Name="BtnVegSelect" Text="{translator:Translate VegSelect}" Style="{StaticResource SideDishButton}"
                             BackgroundColor="#bdc3c7" IsVisible="False" FontSize="Medium" Clicked="BtnVegSelect_Clicked"/>
-                </StackLayout>
-                <Button x:Name="BtnPaidSDSelect" Style="{StaticResource SideDishButton}" Text="{translator:Translate PaidSideDishes}"
-                        BackgroundColor="#6a8a82" Margin="100,0,100,0"  TextColor="White" FontSize="Medium" IsVisible="False"/>
-
-                <StackLayout Spacing="20"
+                        </StackLayout>
+                        <StackLayout>
+                            <Button x:Name="BtnPaidSDSelect" Style="{StaticResource SideDishButton}" Text="{translator:Translate PaidSideDishes}"
+                        BackgroundColor="#6a8a82" Margin="100,0,100,0"  TextColor="White" FontSize="Medium" IsVisible="False" Clicked="BtnPaidSDSelect_Clicked"/>
+                        </StackLayout>
+                        <StackLayout Spacing="20"
                              Orientation="Horizontal"
                              VerticalOptions="EndAndExpand"
                              HorizontalOptions="CenterAndExpand"
                              Margin="0,0,0,40">
-                    <Image HeightRequest="40"
+                            <Image HeightRequest="40"
                            Source="minus.png">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapDecrement" Tapped="TapDecrement_Tapped"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Label x:Name="LblQty"
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapDecrement" Tapped="TapDecrement_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label x:Name="LblQty"
                            Text="1"
                            FontSize="Large"
                            TextColor="{StaticResource LightBrown}"
                            VerticalTextAlignment="Center"/>
-                    <Image HeightRequest="40"
+                            <Image HeightRequest="40"
                            Source="plus.png">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapIncrement" Tapped="TapIncrement_Tapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapIncrement" Tapped="TapIncrement_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+
+                    </StackLayout>
+
+
+
+
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout HorizontalOptions="FillAndExpand"
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                <StackLayout HorizontalOptions="FillAndExpand"
                                  Margin="30,0,0,10">
-                        <Label Text="{translator:Translate TotalPrice}"
+                    <Label Text="{translator:Translate TotalPrice}"
                                TextColor="{StaticResource LightRed}"
                                FontSize="Medium" 
                                HorizontalTextAlignment="Center"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="₪"
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="₪"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Medium" />
-                            <Label x:Name="LblTotalPrice"
+                        <Label x:Name="LblTotalPrice"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Medium" Margin="0,0,15,0" />
-                        </StackLayout>
                     </StackLayout>
-                    <Button x:Name="BtnAddToCart"
+                </StackLayout>
+                <Button x:Name="BtnAddToCart"
                             Text="{translator:Translate AddToCart}"
                             HorizontalOptions="FillAndExpand"
                             BackgroundColor="{StaticResource LightRed}"
                             TextColor="{StaticResource White}"
                             Clicked="BtnAddToCart_Clicked"/>
-                </StackLayout>
             </StackLayout>
-        </ScrollView>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>
