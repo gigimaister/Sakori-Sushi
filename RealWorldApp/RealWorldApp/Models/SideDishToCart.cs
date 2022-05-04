@@ -8,6 +8,8 @@ namespace RealWorldApp.Models
     {
         public int CartId { get; set; }
         public int SideDishId { get; set; }
+        public bool IsChargeExtra { get; set; }
         public SideDish SideDish { get; set; }
+        public PaidSideDish PaidSideDish { get; set; }
     }
 }

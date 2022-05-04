@@ -23,6 +23,10 @@ namespace RealWorldApp.Models
         public int MaxFishSelect { get; set; }
         public int MaxVegSelect { get; set; }
         public object imageArray { get; set; }
+
+        // For Main Course
+        public int MainCourseToProductId { get; set; }
+        public  List<MainCourseToProduct> MainCourseToProduct { get; set; }
         public List<SideDish> SideDishList { get; set; }
         public List<PaidSideDish> PaidSideDishes { get; set; }
         public string FullImageUrl => $"{AppSettings.ApiUrl}/{imageUrl}";
@@ -112,6 +116,39 @@ namespace RealWorldApp.Models
                 }
             }
             return validatorMessages;
+        }
+
+        /// <summary>
+        /// Check If PaidSideDish Is Empty
+        /// </summary>
+        /// <returns>bool true if not null and count > 0
+        /// </returns>     
+        public bool IsPaidSDishEmpty()
+        {
+            if (PaidSideDishes != null)
+            {
+                if (PaidSideDishes.Count > 0)
+                {
+                    return false;
+                }               
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Check If Main Course Is Empty
+        /// </summary>
+        /// <returns>True If Empty List</returns>
+        public bool IsMainCourseIsEmpty()
+        {
+            if(MainCourseToProduct != null)
+            {
+                if(MainCourseToProduct.Count > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

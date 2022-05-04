@@ -76,7 +76,7 @@
                                 <Label CharacterSpacing="1"
                                            TextColor="{StaticResource LightBrown}"
                                            FontSize="Medium" 
-                                           Text="{Binding SideDishesDescription}"/>
+                                           Text="{Binding CombineSdishDescription}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

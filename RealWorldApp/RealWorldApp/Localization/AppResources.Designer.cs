@@ -250,6 +250,15 @@ namespace RealWorldApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בחירת עיקרית.
+        /// </summary>
+        internal static string MainCourse {
+            get {
+                return ResourceManager.GetString("MainCourse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to אולי אח&quot;כ.
         /// </summary>
         internal static string MaybeLater {

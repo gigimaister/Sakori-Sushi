@@ -3,6 +3,7 @@ using RealWorldApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -58,7 +59,7 @@ namespace RealWorldApp.Pages
 
         // Get Product Details
         private async void GetProductDetails(int productId)
-        {
+         {
             var product = await ApiService.GetProductById(productId);
             ProductObj = product;
 
@@ -70,7 +71,9 @@ namespace RealWorldApp.Pages
             // Get All SideDishes
             await GetAllSideDish(product);
             // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
-            if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;} 
+            if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;}
+            // Set Main Course Btm Select Visible
+            if (!product.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
                     
         }
 
@@ -89,6 +92,8 @@ namespace RealWorldApp.Pages
             await GetAllSideDish(ProductObj);
             // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
             if (ProductObj.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true; }
+            // Set Main Course Btm Select Visible
+            if (!ProductObj.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
         }
 
         // Get All SideDish
@@ -198,8 +203,18 @@ namespace RealWorldApp.Pages
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
             LblQtyInt += 1;
             LblQty.Text = LblQtyInt.ToString();
-            // Update Labael Total Price
-            LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+            // If We Have Paid SD We Want To Add Sum Of PaidSD To Total Amount
+            if (!ProductObj.IsPaidSDishEmpty())
+            {
+                var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD)).ToString();
+            }
+            else
+            {
+                // Update Labael Total Price
+                LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+            }
+            
         }
 
         // Minus Button Tapped
@@ -233,8 +248,18 @@ namespace RealWorldApp.Pages
             var LblQtyInt = Convert.ToInt32(LblQty.Text);
             LblQtyInt -= 1;
             LblQty.Text = LblQtyInt.ToString();
-            // Update Labael Total Price
-            LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+
+            // If We Have Paid SD We Want To Add Sum Of PaidSD To Total Amount
+            if (!ProductObj.IsPaidSDishEmpty())
+            {
+                var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD)).ToString();
+            }
+            else
+            {
+                // Update Labael Total Price
+                LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+            }
         }
         #endregion
 
@@ -284,6 +309,15 @@ namespace RealWorldApp.Pages
             IsCvSideDishMultiple = true;
             Navigation.PushModalAsync(new PaidSideDishSelectorPage(PaidSideDish, ProductObj));
         }
+
+        // Main Course List
+        private void BtnMainCourseSelect_Clicked(object sender, EventArgs e)
+        {
+            // Prevent Double Click
+            if (IsClickedOnce) return;
+            IsClickedOnce = true;           
+            Navigation.PushModalAsync(new MainCourseSelectorPage(ProductObj.MainCourseToProduct, ProductObj));
+        }
         #endregion
 
         protected  override void OnAppearing()
@@ -293,8 +327,18 @@ namespace RealWorldApp.Pages
             LblDetail.Text = ProductObj.GetPaidSDFullDetail(ProductObj.GetFullDetail());
             // Init Duplicate Click Preventor
             IsClickedOnce = false;
+            // Set Total Amount With Paid Sidedishes
+            if (!ProductObj.IsPaidSDishEmpty())
+            {
+                var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*ProductObj.price + totalPaidSD).ToString();
+            }
+            else
+            {
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*ProductObj.price).ToString();
+            }
         }
 
-      
+       
     }
 }

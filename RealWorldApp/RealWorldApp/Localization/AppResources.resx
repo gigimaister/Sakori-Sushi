@@ -180,6 +180,9 @@
   <data name="MadeOn" xml:space="preserve">
     <value>בוצעה ב</value>
   </data>
+  <data name="MainCourse" xml:space="preserve">
+    <value>בחירת עיקרית</value>
+  </data>
   <data name="MaybeLater" xml:space="preserve">
     <value>אולי אח"כ</value>
   </data>

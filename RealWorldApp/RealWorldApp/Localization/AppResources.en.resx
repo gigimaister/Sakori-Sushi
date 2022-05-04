@@ -180,6 +180,9 @@
   <data name="MadeOn" xml:space="preserve">
     <value>Made On</value>
   </data>
+  <data name="MainCourse" xml:space="preserve">
+    <value>Main Course</value>
+  </data>
   <data name="MaybeLater" xml:space="preserve">
     <value>Maybe Later</value>
   </data>
