@@ -32,7 +32,7 @@
                                     <Image Aspect="AspectFill"
                                                 HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="FillAndExpand" 
-                                                Source="{Binding FullImageUrl}"/>
+                                                Source="{Binding MainCourseProductDishes.FullImageUrl}"/>
                                 </Frame>
 
                             </StackLayout>

@@ -37,7 +37,7 @@
                                 <Label Text="₪"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Large" />
-                                <Label x:Name="LblPrice"
+                                <Label x:Name="LblPrice" HorizontalOptions="CenterAndExpand"
                                    TextColor="{StaticResource LightBrown}"
                                    FontSize="Large"
                                    Margin="0,0,15,0"/>

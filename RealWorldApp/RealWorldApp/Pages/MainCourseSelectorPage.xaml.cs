@@ -21,13 +21,15 @@ namespace RealWorldApp.Pages
             InitializeComponent();
             MainCourseList = mainCourseList;
             CvMainCourses.ItemsSource = MainCourseList;
-            ProductObj = product;
-            
+            ProductObj = product;           
         }
 
         private void CvMainCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var mainCourseSelected = e.CurrentSelection.FirstOrDefault() as MainCourseToProduct;
+            ProductObj.MainCourseToProductId = mainCourseSelected.MainCourseProductDishesId;            
+            // Go Back To Detail Page
+            Navigation.PopModalAsync();
         }
     }
 }

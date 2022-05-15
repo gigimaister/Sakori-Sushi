@@ -74,6 +74,8 @@ namespace RealWorldApp.Pages
             if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;}
             // Set Main Course Btm Select Visible
             if (!product.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
+            // If Product Has Main Course Select(Different Price Depending On The Type{meat, Tofu, Fish etc.})
+            if (product.HasPaidMainCourse) { BtnMainCourseSelect.IsVisible = true; }
                     
         }
 
@@ -94,6 +96,8 @@ namespace RealWorldApp.Pages
             if (ProductObj.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true; }
             // Set Main Course Btm Select Visible
             if (!ProductObj.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
+            // If Product Has Main Course Select(Different Price Depending On The Type{meat, Tofu, Fish etc.})
+            if (ProductObj.HasPaidMainCourse) { BtnMainCourseSelect.IsVisible = true; }
         }
 
         // Get All SideDish
@@ -161,6 +165,7 @@ namespace RealWorldApp.Pages
             addToCart.CustomerId = Preferences.Get("userId", 0);
             addToCart.SideDishes = ProductObj.SideDishList;
             addToCart.PaidSideDishes = ProductObj.PaidSideDishes;
+            addToCart.MainCourseToProductId = ProductObj.MainCourseToProductId;
 
             var validatorList = ProductObj.ProductDetailValidator();
             // If We Have Validator Errors Promt User
@@ -170,6 +175,12 @@ namespace RealWorldApp.Pages
                 {
                     await DisplayAlert("", validatorMessage, TraslatedMessages.Alert_Dismiss());
                 }
+                return;
+            }
+            // No Main Course
+            if (!ProductObj.IsMainCourseIsEmpty() && addToCart.MainCourseToProductId == 0)
+            {
+                await DisplayAlert("", TraslatedMessages.Alert_No_Main_Course(), TraslatedMessages.Alert_Dismiss());
                 return;
             }
 
@@ -207,12 +218,12 @@ namespace RealWorldApp.Pages
             if (!ProductObj.IsPaidSDishEmpty())
             {
                 var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
-                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD)).ToString();
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD + ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault())).ToString();
             }
             else
             {
                 // Update Labael Total Price
-                LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+                LblTotalPrice.Text = (LblQtyInt * (Convert.ToInt32(LblPrice.Text) + ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault())).ToString();
             }
             
         }
@@ -253,12 +264,12 @@ namespace RealWorldApp.Pages
             if (!ProductObj.IsPaidSDishEmpty())
             {
                 var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
-                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD)).ToString();
+                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*(ProductObj.price + totalPaidSD+ ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault())).ToString();
             }
             else
             {
                 // Update Labael Total Price
-                LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text)).ToString();
+                LblTotalPrice.Text = (LblQtyInt * Convert.ToInt32(LblPrice.Text) + ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault()).ToString();
             }
         }
         #endregion
@@ -331,11 +342,11 @@ namespace RealWorldApp.Pages
             if (!ProductObj.IsPaidSDishEmpty())
             {
                 var totalPaidSD = ProductObj.PaidSideDishes.Sum(x => x.Price);
-                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*ProductObj.price + totalPaidSD).ToString();
+                LblTotalPrice.Text = ((Convert.ToInt32(LblQty.Text)*ProductObj.price + totalPaidSD + ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault())).ToString();
             }
             else
             {
-                LblTotalPrice.Text = (Convert.ToInt32(LblQty.Text)*ProductObj.price).ToString();
+                LblTotalPrice.Text = ((Convert.ToInt32(LblQty.Text)*(ProductObj.price + ProductObj.MainCourseToProduct?.Where(x => x.MainCourseProductDishesId == ProductObj.MainCourseToProductId).Select(x => x.Price).FirstOrDefault()))).ToString();
             }
         }
 

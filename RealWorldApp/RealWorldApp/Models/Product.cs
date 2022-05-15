@@ -23,6 +23,7 @@ namespace RealWorldApp.Models
         public int MaxFishSelect { get; set; }
         public int MaxVegSelect { get; set; }
         public object imageArray { get; set; }
+        public bool HasPaidMainCourse { get; set; }
 
         // For Main Course
         public int MainCourseToProductId { get; set; }
@@ -30,6 +31,7 @@ namespace RealWorldApp.Models
         public List<SideDish> SideDishList { get; set; }
         public List<PaidSideDish> PaidSideDishes { get; set; }
         public string FullImageUrl => $"{AppSettings.ApiUrl}/{imageUrl}";
+
         public string GetFullDetail()
         {
             string fullDeatil = $"{detail}\n{Constants.HebrewMessages.Menu_SideDishes}";
@@ -113,6 +115,13 @@ namespace RealWorldApp.Models
                 {
                     var maxVeg = SideDishList.Where(x => x.MainDishId == (int)MainDish.Veg).Count();
                     if (MaxVegSelect != maxVeg) { validatorMessages.Add(TraslatedMessages.Alert_Product_Detail_Validator(MaxVegSelect)); }
+                }               
+            }
+            if (HasPaidMainCourse)
+            {
+                if(MainCourseToProductId == 0)
+                {
+                    validatorMessages.Add(TraslatedMessages.Alert_No_Main_Course());
                 }
             }
             return validatorMessages;

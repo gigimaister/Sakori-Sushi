@@ -123,6 +123,12 @@ namespace RealWorldApp
             else if (userLanguage == "rus") return "";
             else return HebrewMessages.Alert_Product_Was_Clear;
         }
+        public static string Alert_No_Main_Course()
+        {
+            if (userLanguage == "en") return EnglishMessages.Alert_No_Main_Course;
+            else if (userLanguage == "rus") return "";
+            else return HebrewMessages.Alert_No_Main_Course;
+        }
     }
 
   

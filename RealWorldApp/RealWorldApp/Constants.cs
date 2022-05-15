@@ -45,6 +45,7 @@ namespace RealWorldApp
             {
                 return $"You Must Select At least {maxsideDish} Side Dishes!";
             }
+            public static string Alert_No_Main_Course = "No main course selected!";
         }
         public static class HebrewMessages
         {
@@ -71,6 +72,7 @@ namespace RealWorldApp
             {
                 return $"חובה לבחור לפחות {maxsideDish} תוספות!";
             }
+            public static string Alert_No_Main_Course = "לא נבחרה מנה עיקרית!";           
 
         }
         public static class RussionMessages
