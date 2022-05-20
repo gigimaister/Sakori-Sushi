@@ -41,6 +41,8 @@ namespace RealWorldApp.Pages
 
             foreach (var cartItem in shoppingCartItems)
             {
+                // Init MainCourseToProductId For Course Description In Cart Page
+                cartItem.Product.MainCourseToProductId = cartItem.MainCourseToProductId;
                 ShoppingCartItemCollection.Add(cartItem);
             }
 

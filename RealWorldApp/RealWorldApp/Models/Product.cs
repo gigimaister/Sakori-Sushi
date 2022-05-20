@@ -159,5 +159,22 @@ namespace RealWorldApp.Models
             }
             return true;
         }
+
+        public string GetMainCourseDescriptionForDetailPage()
+        {
+            string mCourse = "";
+            if (HasPaidMainCourse)
+            {
+                if(MainCourseToProductId > 0)
+                {
+                    mCourse = Constants.HebrewMessages.Menu_Course_Selected;
+                    mCourse += MainCourseToProduct.Where(x => x.MainCourseProductDishesId == MainCourseToProductId).Select(x=>x.MainCourseProductDishes.Name).FirstOrDefault();
+                }
+            }
+            return mCourse;
+        }
+
+        public string CourseDescriptionForCartPage => GetMainCourseDescriptionForDetailPage();
+
     }
 }

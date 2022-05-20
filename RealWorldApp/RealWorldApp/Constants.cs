@@ -72,7 +72,8 @@ namespace RealWorldApp
             {
                 return $"חובה לבחור לפחות {maxsideDish} תוספות!";
             }
-            public static string Alert_No_Main_Course = "לא נבחרה מנה עיקרית!";           
+            public static string Alert_No_Main_Course = "לא נבחרה מנה עיקרית!";
+            public static string Menu_Course_Selected = "מנה עיקרית שנבחרה:\n";
 
         }
         public static class RussionMessages

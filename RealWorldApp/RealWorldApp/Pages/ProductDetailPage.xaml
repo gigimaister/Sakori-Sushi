@@ -56,8 +56,8 @@
                            FontSize="Body" />
                         <!--MainCorses Button-->
                         <StackLayout>
-                            <Button x:Name="BtnMainCourseSelect" Style="{StaticResource SideDishButton}" Text="{translator:Translate MainCourse}"
-                        BackgroundColor="Black" Margin="100,0,100,0"  TextColor="White" FontSize="Medium" IsVisible="False" Clicked="BtnMainCourseSelect_Clicked"/>
+                            <Button x:Name="BtnCourseSelect" Style="{StaticResource SideDishButton}" Text="{translator:Translate MainCourse}"
+                        BackgroundColor="Black" Margin="100,0,100,0"  TextColor="White" FontSize="Medium" IsVisible="false" Clicked="BtnMainCourseSelect_Clicked"/>
                         </StackLayout>
                         <!--Side Select Buttons-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

@@ -34,9 +34,11 @@ namespace RealWorldApp.Pages
             VegSideDish = new ObservableCollection<SideDish>();
             PaidSideDish = new ObservableCollection<PaidSideDish>();
             ProductObj = new Product();
-            
+
+            _productId = productId;
+
             // Check If We Edit The Product Instead Of Post New One
-            if(_shoppingCartItem != null)
+            if (_shoppingCartItem != null)
             {
                 ShoppingCartItem = _shoppingCartItem;
                 SetProductForEdit(ShoppingCartItem);
@@ -44,8 +46,7 @@ namespace RealWorldApp.Pages
             else
             {
                 GetProductDetails(productId);
-            }
-            _productId = productId;                   
+            }                           
         }
 
         private async void GetPaidDishes()
@@ -64,18 +65,16 @@ namespace RealWorldApp.Pages
             ProductObj = product;
 
             LblName.Text = product.name;
-            LblDetail.Text = product.GetPaidSDFullDetail(product.GetFullDetail());
+            LblDetail.Text = $"{product.GetPaidSDFullDetail(product.GetFullDetail())}\n{product.GetMainCourseDescriptionForDetailPage()}";
             ImgProduct.Source = product.FullImageUrl;
             LblPrice.Text = product.price.ToString();
             LblTotalPrice.Text = LblPrice.Text;
             // Get All SideDishes
             await GetAllSideDish(product);
             // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
-            if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;}
-            // Set Main Course Btm Select Visible
-            if (!product.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
+            if (product.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true;}           
             // If Product Has Main Course Select(Different Price Depending On The Type{meat, Tofu, Fish etc.})
-            if (product.HasPaidMainCourse) { BtnMainCourseSelect.IsVisible = true; }
+            if (product.HasPaidMainCourse) { BtnCourseSelect.IsVisible = true; }
                     
         }
 
@@ -94,10 +93,9 @@ namespace RealWorldApp.Pages
             await GetAllSideDish(ProductObj);
             // If Product Has Paid SideDishes Selection, Call PaidSideDishes && Set BtnPaidSDSelect True
             if (ProductObj.HasPaidSideDish) { GetPaidDishes(); BtnPaidSDSelect.IsVisible = true; }
-            // Set Main Course Btm Select Visible
-            if (!ProductObj.IsMainCourseIsEmpty()) { BtnMainCourseSelect.IsVisible = true; }
+            
             // If Product Has Main Course Select(Different Price Depending On The Type{meat, Tofu, Fish etc.})
-            if (ProductObj.HasPaidMainCourse) { BtnMainCourseSelect.IsVisible = true; }
+            if (ProductObj.HasPaidMainCourse) { BtnCourseSelect.IsVisible = true; }
         }
 
         // Get All SideDish
@@ -335,7 +333,7 @@ namespace RealWorldApp.Pages
         {
             // Set CvSideDish Default as false
             IsCvSideDishMultiple = false;
-            LblDetail.Text = ProductObj.GetPaidSDFullDetail(ProductObj.GetFullDetail());
+            LblDetail.Text = $"{ProductObj.GetPaidSDFullDetail(ProductObj.GetFullDetail())}\n{ProductObj.GetMainCourseDescriptionForDetailPage()}"; 
             // Init Duplicate Click Preventor
             IsClickedOnce = false;
             // Set Total Amount With Paid Sidedishes
