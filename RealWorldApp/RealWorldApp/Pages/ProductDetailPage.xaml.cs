@@ -160,7 +160,7 @@ namespace RealWorldApp.Pages
             addToCart.Price = LblPrice.Text;
             addToCart.TotalAmount = LblTotalPrice.Text;
             addToCart.ProductId = _productId;
-            addToCart.CustomerId = Preferences.Get("userId", 0);
+            addToCart.CustomerId = Preferences.Get(Constants.Preference.UserId, 0);
             addToCart.SideDishes = ProductObj.SideDishList;
             addToCart.PaidSideDishes = ProductObj.PaidSideDishes;
             addToCart.MainCourseToProductId = ProductObj.MainCourseToProductId;
